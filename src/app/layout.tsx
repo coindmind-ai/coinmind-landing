@@ -1,13 +1,13 @@
 import { type Metadata } from 'next'
-import { Cairo } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import clsx from 'clsx'
 
 import '@/styles/tailwind.css'
 
-const cairo = Cairo({
-  subsets: ['latin', 'arabic'],
+const inter = Inter({
+  subsets: ['latin'],
   display: 'swap',
-  variable: '--font-cairo',
+  variable: '--font-inter',
 })
 
 export const metadata: Metadata = {
@@ -39,8 +39,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={clsx('bg-gray-50 antialiased', cairo.variable)}>
-      <body className="font-cairo">{children}</body>
+    <html lang="en" className={clsx('bg-gray-50 antialiased', inter.variable)}>
+      <body className="font-sans">{children}</body>
     </html>
   )
 }

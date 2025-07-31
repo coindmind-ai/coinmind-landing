@@ -58,7 +58,7 @@
   --color-coinmind-income: oklch(0.556 0.15 140);
   --color-coinmind-expense: oklch(0.556 0.15 30);
 
-  --font-sans: var(--font-cairo);
+  --font-sans: var(--font-inter);
 
   --container-2xl: 40rem;
 

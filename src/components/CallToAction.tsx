@@ -15,10 +15,10 @@ export function CallToAction() {
       <Container className="relative">
         <div className="mx-auto max-w-md sm:text-center">
           <h2 className="text-3xl font-medium tracking-tight text-white sm:text-4xl">
-            Start tracking your expenses today
+            Start using your AI assistant today
           </h2>
           <p className="mt-4 text-lg text-gray-300">
-            Join thousands of users who are already using CoinMind to track their expenses intelligently. 
+            Join thousands of users who are already using CoinMind's AI assistant to track expenses with voice commands. 
             Get started in seconds with our free tier.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">

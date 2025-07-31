@@ -37,16 +37,16 @@ interface CustomAnimationProps {
 
 const features = [
   {
-    name: 'AI-Powered Expense Tracking',
+    name: 'AI-Powered Voice Assistant',
     description:
-      'Simply tell CoinMind about your expenses in any language. Our AI understands natural language and automatically categorizes your transactions.',
+      'Simply speak to CoinMind about your expenses in any language. Our AI understands natural language and automatically categorizes your transactions.',
     icon: DeviceUserIcon,
     screen: ChatScreen,
   },
   {
-    name: 'Multi-Language Support',
+    name: 'Multi-Language Voice Support',
     description:
-      'Track expenses in English, Arabic, Spanish, and many more languages. CoinMind understands and responds in your preferred language.',
+      'Track expenses in English, Arabic, Spanish, and many more languages using voice commands. CoinMind understands and responds in your preferred language.',
     icon: DeviceNotificationIcon,
     screen: LanguageScreen,
   },
@@ -194,27 +194,167 @@ function ChatScreen(props: ScreenProps) {
   return (
     <AppScreen className="w-full">
       <MotionAppScreenHeader {...(props.animated ? headerAnimation : {})}>
-        <AppScreen.Title>AI Assistant</AppScreen.Title>
+        <AppScreen.Title>Transactions</AppScreen.Title>
         <AppScreen.Subtitle>
-          Track expenses naturally
+          Track your spending
         </AppScreen.Subtitle>
       </MotionAppScreenHeader>
       <MotionAppScreenBody
         {...(props.animated ? { ...bodyAnimation, custom: props.custom } : {})}
       >
-        <div className="px-4 py-6">
-          <div className="space-y-4">
-            <div className="rounded-lg bg-gray-100 p-3">
-              <div className="text-sm text-gray-600">Hi! I'm your personal finance assistant. I can help you track expenses, analyze spending, and answer questions about your finances in any language.</div>
+        <div className="flex flex-col h-full">
+          {/* Header with Balance */}
+          <div className="px-4 py-6 text-center">
+            <div className="text-2xl font-bold text-gray-900">USD 700.47</div>
+            <div className="text-sm text-gray-600">Cash Flow</div>
+          </div>
+
+          {/* Search Bar */}
+          <div className="px-4 pb-4">
+            <div className="flex items-center space-x-3">
+              <div className="flex-1 bg-gray-100 rounded-lg px-4 py-2 flex items-center">
+                <svg className="w-4 h-4 text-gray-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Search transactions..."
+                  className="flex-1 text-sm bg-transparent outline-none"
+                  readOnly
+                />
+              </div>
+              <button className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+                <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
             </div>
-            <div className="flex justify-end">
-              <div className="rounded-lg bg-gray-900 p-3 max-w-xs">
-                <div className="text-sm text-white">I spent $50 on groceries</div>
+          </div>
+
+          {/* Month Navigation */}
+          <div className="px-4 pb-4">
+            <div className="flex items-center justify-between">
+              <button className="flex items-center space-x-2 bg-gray-100 rounded-full px-3 py-1">
+                <span className="text-sm text-gray-700">By Month</span>
+                <svg className="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <div className="flex items-center space-x-3">
+                <svg className="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span className="text-sm font-medium text-gray-900">July 2025</span>
+                <svg className="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
               </div>
             </div>
-            <div className="rounded-lg bg-gray-100 p-3">
-              <div className="text-sm text-gray-600">Perfect! I've added your $50 grocery expense. This is your first expense recorded, so we're off to a great start!</div>
+          </div>
+
+          {/* Spending Overview Button */}
+          <div className="px-4 pb-4">
+            <button className="w-full bg-gray-100 rounded-full px-4 py-3 flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <svg className="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                </svg>
+                <span className="text-sm font-medium text-gray-900">Spending Overview</span>
+              </div>
+              <svg className="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Transaction List Header */}
+          <div className="border-t border-gray-200 px-4 py-3">
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-gray-900">Thursday, July 31, 2025</span>
+              <span className="text-sm font-medium text-gray-900">USD 711.72</span>
             </div>
+          </div>
+
+          {/* Transaction List */}
+          <div className="flex-1 px-4 space-y-3">
+            {/* Transaction 1 - Food & Dining */}
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
+                <svg className="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-medium text-gray-900">Food & Dining</div>
+                <div className="text-xs text-gray-500">Unknown • spent on groceries</div>
+              </div>
+              <div className="text-sm font-medium text-red-600">-USD 50.00</div>
+            </div>
+
+            {/* Transaction 2 - Food & Dining */}
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
+                <svg className="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-medium text-gray-900">Food & Dining</div>
+                <div className="text-xs text-gray-500">Unknown • groceries</div>
+              </div>
+              <div className="text-sm font-medium text-red-600">-USD 50.00</div>
+            </div>
+
+            {/* Transaction 3 - Salary */}
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-medium text-gray-900">Salary</div>
+                <div className="text-xs text-gray-500">Unknown • my salary</div>
+              </div>
+              <div className="text-sm font-medium text-green-600">+USD 1,000.00</div>
+            </div>
+
+            {/* Transaction 4 - Gift */}
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
+                <svg className="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-medium text-gray-900">Gift</div>
+                <div className="text-xs text-gray-500">my dad • my dad take from me 30$</div>
+              </div>
+              <div className="text-sm font-medium text-red-600">-USD 30.00</div>
+            </div>
+
+            {/* Transaction 5 - Gift Income */}
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
+                <svg className="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-medium text-gray-900">Gift</div>
+                <div className="text-xs text-gray-500">dad • my dad give me 100 EGP</div>
+              </div>
+              <div className="text-sm font-medium text-green-600">EGP 100.00</div>
+            </div>
+          </div>
+
+          {/* Floating Action Button */}
+          <div className="absolute bottom-4 right-4">
+            <button className="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center shadow-lg">
+              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+              </svg>
+            </button>
           </div>
         </div>
       </MotionAppScreenBody>

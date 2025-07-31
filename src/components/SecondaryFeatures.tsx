@@ -6,19 +6,19 @@ const features = [
   {
     name: 'Multi-Currency Support',
     description:
-      'Track expenses in 170+ currencies worldwide. Perfect for travelers and international users.',
+      'Track expenses in 170+ currencies worldwide using voice commands. Perfect for travelers and international users.',
     icon: DeviceArrowIcon,
   },
   {
-    name: 'Advanced Analytics',
+    name: 'Advanced AI Analytics',
     description:
-      'Get insights into your spending patterns with detailed charts, trends, and predictions.',
+      'Get intelligent insights into your spending patterns with AI-powered charts, trends, and predictions.',
     icon: DeviceCardsIcon,
   },
   {
-    name: 'Real-time Tracking',
+    name: 'Real-time Voice Tracking',
     description:
-      'Track your expenses as they happen with instant categorization and balance updates.',
+      'Track your expenses as they happen with instant voice categorization and balance updates.',
     icon: DeviceClockIcon,
   },
   {
@@ -34,9 +34,9 @@ const features = [
     icon: DeviceLockIcon,
   },
   {
-    name: 'Smart Categorization',
+    name: 'Smart AI Categorization',
     description:
-      'Our AI automatically categorizes your transactions, saving you time and providing better insights.',
+      'Our AI automatically categorizes your transactions from voice input, saving you time and providing better insights.',
     icon: DeviceChartIcon,
   },
 ]

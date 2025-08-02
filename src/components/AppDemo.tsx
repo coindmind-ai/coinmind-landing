@@ -6,240 +6,177 @@ import { motion, useInView, useMotionValue } from 'framer-motion'
 
 import { AppScreen } from '@/components/AppScreen'
 
-const expenses = [
-  150, 89, 234, 67, 189, 145, 78, 256, 123, 98, 167, 234, 89, 156, 234, 78, 145, 189, 123, 167, 234, 89, 156, 234, 78, 145, 189, 123, 167, 234, 89, 156, 234
+// Sample chat messages for the demo
+const sampleMessages = [
+  {
+    id: 1,
+    content: "Hello! I'm your AI financial assistant. How can I help you track your expenses today?",
+    isUser: false,
+    timestamp: new Date(Date.now() - 300000), // 5 minutes ago
+    suggestions: ["I spent $50 on groceries", "How much did I spend this month?", "Add a new transaction"]
+  },
+  {
+    id: 2,
+    content: "I spent $50 on groceries yesterday",
+    isUser: true,
+    timestamp: new Date(Date.now() - 240000), // 4 minutes ago
+  },
+  {
+    id: 3,
+    content: "Great! I've added your grocery expense of $50.00 to your transactions. Your total spending this month is now $1,234.56. Would you like me to categorize this as 'Food & Dining'?",
+    isUser: false,
+    timestamp: new Date(Date.now() - 180000), // 3 minutes ago
+    suggestions: ["Yes, categorize as Food & Dining", "No, change category", "Show me my spending breakdown"]
+  },
+  {
+    id: 4,
+    content: "Yes, categorize as Food & Dining",
+    isUser: true,
+    timestamp: new Date(Date.now() - 120000), // 2 minutes ago
+  },
+  {
+    id: 5,
+    content: "Perfect! I've categorized your grocery expense as 'Food & Dining'. Your food spending this month is now $456.78. Is there anything else you'd like to track?",
+    isUser: false,
+    timestamp: new Date(Date.now() - 60000), // 1 minute ago
+    suggestions: ["Add another transaction", "Show me my budget", "Generate spending report"]
+  }
 ]
-const maxExpense = Math.max(...expenses)
-const minExpense = Math.min(...expenses)
 
-function Chart({
-  className,
-  activePointIndex,
-  onChangeActivePointIndex,
-  width: totalWidth,
-  height: totalHeight,
-  paddingX = 0,
-  paddingY = 0,
-  gridLines = 6,
-  ...props
-}: React.ComponentPropsWithoutRef<'svg'> & {
-  activePointIndex: number | null
-  onChangeActivePointIndex: (index: number | null) => void
-  width: number
-  height: number
-  paddingX?: number
-  paddingY?: number
-  gridLines?: number
-}) {
-  let width = totalWidth - paddingX * 2
-  let height = totalHeight - paddingY * 2
+function ChatBubble({ message, isUser }: { message: any; isUser: boolean }) {
+  return (
+    <div className={clsx("flex mb-4", isUser ? "justify-end" : "justify-start")}>
+      {/* Assistant avatar */}
+      {!isUser && (
+        <div className="flex-shrink-0 mr-2">
+          <div className="w-9 h-9 bg-gray-100 rounded-full flex items-center justify-center border border-gray-200">
+            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+        </div>
+      )}
 
-  let id = useId()
-  let svgRef = useRef<React.ElementRef<'svg'>>(null)
-  let pathRef = useRef<React.ElementRef<'path'>>(null)
-  let isInView = useInView(svgRef, { amount: 0.5, once: true })
-  let pathWidth = useMotionValue(0)
-  let [interactionEnabled, setInteractionEnabled] = useState(false)
+      {/* Message bubble */}
+      <div className={clsx(
+        "max-w-xs lg:max-w-md px-4 py-2 rounded-2xl",
+        isUser 
+          ? "bg-black text-white rounded-br-md" 
+          : "bg-gray-100 text-gray-900 rounded-bl-md"
+      )}>
+        <p className="text-sm leading-relaxed">{message.content}</p>
+        
+        {/* Suggestions */}
+        {message.suggestions && !isUser && (
+          <div className="flex flex-wrap gap-2 mt-3">
+            {message.suggestions.map((suggestion: string, idx: number) => (
+              <button
+                key={idx}
+                className="px-3 py-1 bg-white text-gray-700 text-xs rounded-full border border-gray-200 hover:bg-gray-50 transition-colors"
+              >
+                {suggestion}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
 
-  let path = ''
-  let points: Array<{ x: number; y: number }> = []
+      {/* User avatar */}
+      {isUser && (
+        <div className="flex-shrink-0 ml-2">
+          <div className="w-9 h-9 bg-black rounded-full flex items-center justify-center">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
 
-  for (let index = 0; index < expenses.length; index++) {
-    let x = paddingX + (index / (expenses.length - 1)) * width
-    let y =
-      paddingY +
-      (1 - (expenses[index] - minExpense) / (maxExpense - minExpense)) * height
-    points.push({ x, y })
-    path += `${index === 0 ? 'M' : 'L'} ${x.toFixed(4)} ${y.toFixed(4)}`
+function ChatInput() {
+  const [inputValue, setInputValue] = useState("")
+  const [isTyping, setIsTyping] = useState(false)
+
+  const handleSend = () => {
+    if (inputValue.trim()) {
+      setIsTyping(true)
+      // Simulate typing delay
+      setTimeout(() => {
+        setIsTyping(false)
+        setInputValue("")
+      }, 2000)
+    }
   }
 
   return (
-    <svg
-      ref={svgRef}
-      viewBox={`0 0 ${totalWidth} ${totalHeight}`}
-      className={clsx(className, 'overflow-visible')}
-      {...(interactionEnabled
-        ? {
-            onPointerLeave: () => onChangeActivePointIndex(null),
-            onPointerMove: (event) => {
-              let x = event.nativeEvent.offsetX
-              let closestPointIndex: number | null = null
-              let closestDistance = Infinity
-              for (
-                let pointIndex = 0;
-                pointIndex < points.length;
-                pointIndex++
-              ) {
-                let point = points[pointIndex]
-                let distance = Math.abs(point.x - x)
-                if (distance < closestDistance) {
-                  closestDistance = distance
-                  closestPointIndex = pointIndex
-                } else {
-                  break
-                }
-              }
-              onChangeActivePointIndex(closestPointIndex)
-            },
-          }
-        : {})}
-      {...props}
-    >
-      <defs>
-        <clipPath id={`${id}-clip`}>
-          <path d={`${path} V ${height + paddingY} H ${paddingX} Z`} />
-        </clipPath>
-        <linearGradient id={`${id}-gradient`} x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="#D96B2B" />
-          <stop offset="100%" stopColor="#D96B2B" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      {[...Array(gridLines - 1).keys()].map((index) => (
-        <line
-          key={index}
-          stroke="#a3a3a3"
-          opacity="0.1"
-          x1="0"
-          y1={(totalHeight / gridLines) * (index + 1)}
-          x2={totalWidth}
-          y2={(totalHeight / gridLines) * (index + 1)}
-        />
-      ))}
-      <motion.rect
-        y={paddingY}
-        width={pathWidth}
-        height={height}
-        fill={`url(#${id}-gradient)`}
-        clipPath={`url(#${id}-clip)`}
-        opacity="0.5"
-      />
-      <motion.path
-        ref={pathRef}
-        d={path}
-        fill="none"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        initial={{ pathLength: 0 }}
-        transition={{ duration: 1 }}
-        {...(isInView ? { stroke: '#D96B2B', animate: { pathLength: 1 } } : {})}
-        onUpdate={({ pathLength }) => {
-          if (pathRef.current && typeof pathLength === 'number') {
-            pathWidth.set(
-              pathRef.current.getPointAtLength(
-                pathLength * pathRef.current.getTotalLength(),
-              ).x,
-            )
-          }
-        }}
-        onAnimationComplete={() => setInteractionEnabled(true)}
-      />
-      {activePointIndex !== null && (
-        <>
-          <line
-            x1="0"
-            y1={points[activePointIndex].y}
-            x2={totalWidth}
-            y2={points[activePointIndex].y}
-            stroke="#D96B2B"
-            strokeDasharray="1 3"
+    <div className="border-t border-gray-200 bg-white p-4">
+      <div className="flex items-end space-x-3">
+        <div className="flex-1 relative">
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Type your message..."
+                         className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent text-sm"
+            onKeyPress={(e) => e.key === 'Enter' && handleSend()}
           />
-          <circle
-            r="4"
-            cx={points[activePointIndex].x}
-            cy={points[activePointIndex].y}
-            fill="#fff"
-            strokeWidth="2"
-            stroke="#D96B2B"
-          />
-        </>
-      )}
-    </svg>
+          {isTyping && (
+            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex space-x-1">
+              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+            </div>
+          )}
+        </div>
+                 <button
+           onClick={handleSend}
+           disabled={!inputValue.trim()}
+           className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+         >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+          </svg>
+        </button>
+      </div>
+    </div>
   )
 }
 
 export function AppDemo() {
-  let [activePointIndex, setActivePointIndex] = useState<number | null>(null)
-  let activeExpenseIndex = activePointIndex ?? expenses.length - 1
-  let activeValue = expenses[activeExpenseIndex]
-  let previousValue = expenses[activeExpenseIndex - 1]
-  let percentageChange =
-    activeExpenseIndex === 0
-      ? null
-      : ((activeValue - previousValue) / previousValue) * 100
-
   return (
     <AppScreen>
       <AppScreen.Body>
-        <div className="p-4">
-          <div className="flex gap-2">
-            <div className="text-xs/6 text-gray-500">CoinMind</div>
-            <div className="text-sm text-gray-900">Cash Flow</div>
-            <svg viewBox="0 0 24 24" className="ml-auto h-6 w-6" fill="none">
-              <path
-                d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-                stroke="#171717"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div className="mt-3 border-t border-gray-200 pt-5">
-            <div className="flex items-baseline gap-2">
-              <div className="text-2xl tracking-tight text-gray-900 tabular-nums">
-                ${activeValue.toFixed(2)}
+        <div className="flex flex-col h-full">
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                         <div className="flex items-center space-x-3">
+               <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
+                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                 </svg>
+               </div>
+              <div>
+                <h3 className="font-semibold text-gray-900">CoinMind AI</h3>
+                <p className="text-xs text-gray-500">Your financial assistant</p>
               </div>
-              <div className="text-sm text-gray-900">USD</div>
-              {percentageChange && (
-                <div
-                  className={clsx(
-                    'ml-auto text-sm tracking-tight tabular-nums',
-                    percentageChange >= 0 ? 'text-red-500' : 'text-green-500',
-                  )}
-                >
-                  {`${
-                    percentageChange >= 0 ? '+' : ''
-                  }${percentageChange.toFixed(1)}%`}
-                </div>
-              )}
             </div>
-            <div className="mt-6 flex gap-4 text-xs text-gray-500">
-              <div>1D</div>
-              <div>5D</div>
-              <div className="font-semibold text-gray-900">1M</div>
-              <div>6M</div>
-              <div>1Y</div>
-              <div>5Y</div>
-            </div>
-            <div className="mt-3 rounded-lg bg-gray-50 ring-1 ring-black/5 ring-inset">
-              <Chart
-                width={286}
-                height={208}
-                paddingX={16}
-                paddingY={32}
-                activePointIndex={activePointIndex}
-                onChangeActivePointIndex={setActivePointIndex}
-              />
-            </div>
-            <div className="mt-4 rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-semibold text-white">
-              Add Transaction
-            </div>
-            <div className="mt-3 divide-y divide-gray-100 text-sm">
-              <div className="flex justify-between py-1">
-                <div className="text-gray-500">Income</div>
-                <div className="font-medium text-green-600">$2,450.00</div>
-              </div>
-              <div className="flex justify-between py-1">
-                <div className="text-gray-500">Expenses</div>
-                <div className="font-medium text-red-600">$1,234.56</div>
-              </div>
-              <div className="flex justify-between py-1">
-                <div className="text-gray-500">Balance</div>
-                <div className="font-medium text-gray-900">$1,215.44</div>
-              </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span className="text-xs text-gray-500">Online</span>
             </div>
           </div>
+
+          {/* Chat messages */}
+          <div className="flex-1 p-4 overflow-y-auto space-y-4">
+            {sampleMessages.map((message) => (
+              <ChatBubble key={message.id} message={message} isUser={message.isUser} />
+            ))}
+          </div>
+
+          {/* Chat input */}
+          <ChatInput />
         </div>
       </AppScreen.Body>
     </AppScreen>

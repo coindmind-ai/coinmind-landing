@@ -8,7 +8,7 @@ export function Logomark(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg viewBox="0 0 120 40" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 140 40" aria-hidden="true" {...props}>
       <Logomark width="32" height="32" className="fill-gray-900" />
       <text x="40" y="26" className="text-xl font-bold fill-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>
         CoinMind

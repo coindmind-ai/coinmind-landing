@@ -37,25 +37,28 @@ interface CustomAnimationProps {
 
 const features = [
   {
-    name: 'AI-Powered Voice Assistant',
+    name: 'AI-Powered Voice & Chat',
     description:
-      'Simply speak to CoinMind about your expenses in any language. Our AI understands natural language and automatically categorizes your transactions.',
+      'Simply speak or type to CoinMind about your expenses in any language. Our AI understands natural language and automatically categorizes your transactions with intelligent insights.',
     icon: DeviceUserIcon,
     screen: ChatScreen,
+    benefits: ['Natural language processing', 'Multi-language support', 'Smart categorization'],
   },
   {
-    name: 'Multi-Language Voice Support',
+    name: 'Multi-Language Support',
     description:
-      'Track expenses in English, Arabic, Spanish, and many more languages using voice commands. CoinMind understands and responds in your preferred language.',
+      'Track expenses in English, Arabic, Spanish, French, German, and 170+ languages. CoinMind understands and responds in your preferred language with perfect accuracy.',
     icon: DeviceNotificationIcon,
     screen: LanguageScreen,
+    benefits: ['170+ languages', 'Perfect accuracy', 'Local context'],
   },
   {
     name: 'Smart Receipt OCR',
     description:
-      'Take a photo of your receipt and let our AI extract all the details automatically. No more manual data entry.',
+      'Take a photo of your receipt and let our AI extract all the details automatically. No more manual data entry - just snap and track instantly.',
     icon: DeviceTouchIcon,
     screen: ReceiptScreen,
+    benefits: ['Instant extraction', 'High accuracy', 'No manual entry'],
   },
 ]
 
@@ -504,26 +507,46 @@ function FeaturesDesktop() {
         {features.map((feature, featureIndex) => (
           <div
             key={feature.name}
-            className="relative rounded-2xl transition-colors hover:bg-gray-800/30"
+            className="relative rounded-2xl transition-all duration-300 hover:bg-gray-800/30 hover:scale-105"
           >
             {featureIndex === selectedIndex && (
               <motion.div
                 layoutId="activeBackground"
-                className="absolute inset-0 bg-gray-800"
+                className="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-700 border border-coinmind-accent/20"
                 initial={{ borderRadius: 16 }}
               />
             )}
             <div className="relative z-10 p-8">
-              <feature.icon className="h-8 w-8" />
-              <h3 className="mt-6 text-lg font-semibold text-white">
-                <Tab className="text-left data-selected:not-data-focus:outline-hidden">
-                  <span className="absolute inset-0 rounded-2xl" />
-                  {feature.name}
-                </Tab>
-              </h3>
-              <p className="mt-2 text-sm text-gray-400">
-                {feature.description}
-              </p>
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-xl bg-coinmind-primary/10 border border-coinmind-accent/20">
+                  <feature.icon className="h-8 w-8 text-coinmind-accent" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-white">
+                    <Tab className="text-left data-selected:not-data-focus:outline-hidden">
+                      <span className="absolute inset-0 rounded-2xl" />
+                      {feature.name}
+                    </Tab>
+                  </h3>
+                  <p className="mt-3 text-base text-gray-300 leading-relaxed">
+                    {feature.description}
+                  </p>
+                  
+                  {/* Benefits */}
+                  {feature.benefits && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {feature.benefits.map((benefit, index) => (
+                        <span
+                          key={index}
+                          className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-coinmind-accent/10 text-coinmind-accent border border-coinmind-accent/20"
+                        >
+                          {benefit}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         ))}
@@ -608,7 +631,7 @@ function FeaturesMobile() {
             }}
             className="w-full flex-none snap-center px-4 sm:px-6"
           >
-            <div className="relative transform overflow-hidden rounded-2xl bg-gray-800 px-5 py-6">
+            <div className="relative transform overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 px-5 py-6 border border-gray-700/50 shadow-2xl">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <CircleBackground
                   color="#18181b"
@@ -618,14 +641,32 @@ function FeaturesMobile() {
               <PhoneFrame className="relative mx-auto w-full max-w-[366px]">
                 <feature.screen />
               </PhoneFrame>
-              <div className="absolute inset-x-0 bottom-0 bg-gray-800/95 p-6 backdrop-blur-sm sm:p-10">
-                <feature.icon className="h-8 w-8" />
-                <h3 className="mt-6 text-sm font-semibold text-white sm:text-lg">
-                  {feature.name}
-                </h3>
-                <p className="mt-2 text-sm text-gray-400">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-gray-900/95 to-gray-800/80 p-6 backdrop-blur-sm sm:p-10">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-coinmind-primary/10">
+                    <feature.icon className="h-6 w-6 text-coinmind-accent" />
+                  </div>
+                  <h3 className="text-sm font-bold text-white sm:text-lg">
+                    {feature.name}
+                  </h3>
+                </div>
+                <p className="mt-3 text-sm text-gray-300 leading-relaxed">
                   {feature.description}
                 </p>
+                
+                {/* Benefits */}
+                {feature.benefits && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {feature.benefits.map((benefit, index) => (
+                      <span
+                        key={index}
+                        className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-coinmind-accent/10 text-coinmind-accent border border-coinmind-accent/20"
+                      >
+                        {benefit}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -637,8 +678,8 @@ function FeaturesMobile() {
             type="button"
             key={featureIndex}
             className={clsx(
-              'relative h-0.5 w-4 rounded-full',
-              featureIndex === activeIndex ? 'bg-gray-300' : 'bg-gray-500',
+              'relative h-1 w-6 rounded-full transition-all duration-300',
+              featureIndex === activeIndex ? 'bg-coinmind-accent' : 'bg-gray-600 hover:bg-gray-500',
             )}
             aria-label={`Go to slide ${featureIndex + 1}`}
             onClick={() => {
@@ -661,19 +702,50 @@ export function PrimaryFeatures() {
     <section
       id="features"
       aria-label="Features for AI-powered expense tracking"
-      className="bg-gray-900 py-20 sm:py-32"
+      className="bg-gradient-to-br from-gray-900 via-gray-900 to-coinmind-primary/20 py-20 sm:py-32 relative overflow-hidden"
     >
-      <Container>
-        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
-          <h2 className="text-3xl font-medium tracking-tight text-white">
-            Every feature you need for smart expense tracking.
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-coinmind-primary/5 to-transparent"></div>
+      <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-coinmind-accent/20 to-coinmind-primary/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-20 w-24 h-24 bg-gradient-to-br from-coinmind-income/20 to-coinmind-expense/20 rounded-full blur-2xl"></div>
+      
+      <Container className="relative">
+        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl text-center lg:text-left">
+          {/* Badge */}
+          <div className="inline-flex items-center rounded-full bg-coinmind-accent/10 px-4 py-2 text-sm font-medium text-coinmind-accent mb-6">
+            <span className="mr-2">✨</span>
+            Powerful AI Features
+          </div>
+          
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Every feature you need for{' '}
+            <span className="bg-gradient-to-r from-coinmind-accent to-white bg-clip-text text-transparent">
+              smart expense tracking
+            </span>
           </h2>
-          <p className="mt-2 text-lg text-gray-400">
+          <p className="mt-6 text-xl text-gray-300 leading-relaxed">
             CoinMind was built for people who want to track their finances intelligently. 
             Our AI understands natural language, supports multiple languages, and makes expense tracking effortless.
           </p>
+          
+          {/* Key stats */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="text-center lg:text-left">
+              <div className="text-2xl font-bold text-coinmind-income">170+</div>
+              <div className="text-sm text-gray-400">Languages Supported</div>
+            </div>
+            <div className="text-center lg:text-left">
+              <div className="text-2xl font-bold text-coinmind-accent">99%</div>
+              <div className="text-sm text-gray-400">OCR Accuracy</div>
+            </div>
+            <div className="text-center lg:text-left">
+              <div className="text-2xl font-bold text-coinmind-expense">Instant</div>
+              <div className="text-sm text-gray-400">Processing Speed</div>
+            </div>
+          </div>
         </div>
       </Container>
+      
       <div className="mt-16 md:hidden">
         <FeaturesMobile />
       </div>

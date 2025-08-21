@@ -59,21 +59,21 @@ export function Faqs() {
     <section
       id="faqs"
       aria-labelledby="faqs-title"
-      className="border-t border-gray-200 py-20 sm:py-32"
+      className="border-t border-gray-200 py-20 sm:py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50"
     >
       <Container>
-        <div className="mx-auto max-w-2xl lg:mx-0">
+        <div className="mx-auto max-w-2xl lg:mx-0 text-center lg:text-left">
           <h2
             id="faqs-title"
-            className="text-3xl font-medium tracking-tight text-gray-900"
+            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
           >
             Frequently asked questions
           </h2>
-          <p className="mt-2 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-gray-600 leading-relaxed">
             If you have anything else you want to ask,{' '}
             <a
               href="mailto:support@coinmind.app"
-              className="text-gray-900 underline"
+              className="text-coinmind-primary underline hover:text-coinmind-primary/80 transition-colors duration-200 font-semibold"
             >
               reach out to us
             </a>
@@ -88,17 +88,47 @@ export function Faqs() {
             <li key={columnIndex}>
               <ul role="list" className="space-y-10">
                 {column.map((faq, faqIndex) => (
-                  <li key={faqIndex}>
-                    <h3 className="text-lg/6 font-semibold text-gray-900">
-                      {faq.question}
-                    </h3>
-                    <p className="mt-4 text-sm text-gray-700">{faq.answer}</p>
+                  <li key={faqIndex} className="group">
+                    <div className="relative">
+                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-coinmind-primary transition-colors duration-200 leading-relaxed">
+                        {faq.question}
+                      </h3>
+                      <div className="mt-4 text-sm text-gray-600 leading-relaxed bg-white p-4 rounded-lg border border-gray-200/50 group-hover:border-coinmind-accent/30 transition-all duration-200 group-hover:shadow-sm">
+                        {faq.answer}
+                      </div>
+                    </div>
                   </li>
                 ))}
               </ul>
             </li>
           ))}
         </ul>
+        
+        {/* Additional CTA */}
+        <div className="mx-auto mt-16 max-w-2xl text-center">
+          <div className="bg-gradient-to-r from-coinmind-primary/5 to-coinmind-accent/5 rounded-2xl p-8 border border-coinmind-accent/20">
+            <h3 className="text-xl font-semibold text-coinmind-primary mb-4">
+              Still have questions?
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Our support team is here to help you get the most out of CoinMind.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="mailto:support@coinmind.app"
+                className="inline-flex items-center justify-center rounded-lg bg-coinmind-primary px-6 py-3 text-sm font-semibold text-white hover:bg-coinmind-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                Contact Support
+              </a>
+              <a
+                href="https://www.coinmind-ai.com/auth/signup"
+                className="inline-flex items-center justify-center rounded-lg border border-coinmind-primary/30 px-6 py-3 text-sm font-semibold text-coinmind-primary hover:bg-coinmind-primary/5 transition-all duration-200"
+              >
+                Try CoinMind Free
+              </a>
+            </div>
+          </div>
+        </div>
       </Container>
     </section>
   )

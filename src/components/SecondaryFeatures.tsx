@@ -191,14 +191,23 @@ export function SecondaryFeatures() {
     <section
       id="secondary-features"
       aria-label="Features for smart expense tracking"
-      className="py-20 sm:py-32"
+      className="py-20 sm:py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50"
     >
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-3xl font-medium tracking-tight text-gray-900">
-            Everything you need for smart expense tracking.
+          {/* Badge */}
+          <div className="inline-flex items-center rounded-full bg-coinmind-accent/10 px-4 py-2 text-sm font-medium text-coinmind-primary mb-6">
+            <span className="mr-2">🚀</span>
+            Advanced Features
+          </div>
+          
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            Everything you need for{' '}
+            <span className="bg-gradient-to-r from-coinmind-primary to-coinmind-accent bg-clip-text text-transparent">
+              smart expense tracking
+            </span>
           </h2>
-          <p className="mt-2 text-lg text-gray-600">
+          <p className="mt-6 text-xl text-gray-600 leading-relaxed">
             CoinMind combines AI technology with powerful features to make expense tracking effortless and insightful.
           </p>
         </div>
@@ -209,13 +218,19 @@ export function SecondaryFeatures() {
           {features.map((feature) => (
             <li
               key={feature.name}
-              className="rounded-2xl border border-gray-200 p-8"
+              className="group rounded-2xl border border-gray-200 p-8 bg-white hover:border-coinmind-accent/30 hover:shadow-lg transition-all duration-300 hover:scale-105"
             >
-              <feature.icon className="h-8 w-8" />
-              <h3 className="mt-6 font-semibold text-gray-900">
-                {feature.name}
-              </h3>
-              <p className="mt-2 text-gray-700">{feature.description}</p>
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-xl bg-coinmind-primary/10 border border-coinmind-accent/20 group-hover:bg-coinmind-accent/10 transition-colors duration-300">
+                  <feature.icon className="h-8 w-8 text-coinmind-primary group-hover:text-coinmind-accent transition-colors duration-300" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-coinmind-primary transition-colors duration-300">
+                    {feature.name}
+                  </h3>
+                  <p className="mt-3 text-gray-600 leading-relaxed">{feature.description}</p>
+                </div>
+              </div>
             </li>
           ))}
         </ul>

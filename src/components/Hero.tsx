@@ -39,8 +39,8 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
             y2="1025"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#18181b" />
-            <stop offset="1" stopColor="#18181b" stopOpacity="0" />
+            <stop stopColor="oklch(0.205 0 0)" />
+            <stop offset="1" stopColor="oklch(0.708 0.05 60)" stopOpacity="0" />
           </linearGradient>
         </defs>
       </svg>
@@ -69,8 +69,8 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
             y2="913"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#18181b" />
-            <stop offset="1" stopColor="#18181b" stopOpacity="0" />
+            <stop stopColor="oklch(0.708 0.05 60)" />
+            <stop offset="1" stopColor="oklch(0.205 0 0)" stopOpacity="0" />
           </linearGradient>
         </defs>
       </svg>
@@ -80,24 +80,57 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
 
 export function Hero() {
   return (
-    <div className="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
+    <div className="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36 bg-gradient-to-br from-gray-50 via-white to-gray-50">
       <Container>
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
-            <h1 className="text-4xl font-medium tracking-tight text-gray-900">
-              Your AI-Powered Personal Finance Assistant
+            {/* Badge */}
+            <div className="inline-flex items-center rounded-full bg-coinmind-accent/10 px-4 py-2 text-sm font-medium text-coinmind-primary mb-6">
+              <span className="mr-2">🚀</span>
+              AI-Powered Personal Finance
+            </div>
+            
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              Your AI{' '}
+              <span className="bg-gradient-to-r from-coinmind-primary to-coinmind-accent bg-clip-text text-transparent">
+                Personal Finance
+              </span>{' '}
+              Assistant
             </h1>
-            <p className="mt-6 text-lg text-gray-600">
-              Track expenses with voice commands, analyze spending patterns, and get intelligent insights about your finances in any language. 
-              CoinMind uses advanced AI to help you make smarter financial decisions.
+            
+            <p className="mt-6 text-lg text-gray-600 leading-relaxed">
+              Simply <span className="font-bold text-coinmind-primary">speak and chat</span> with CoinMind to add and track your income & expenses in any language. 
+              <span className="font-semibold text-coinmind-primary"> Our advanced AI understands natural language</span> and automatically categorizes your transactions, giving you intelligent insights to make smarter financial decisions.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-6">
+            
+            {/* Key Benefits */}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+              <div className="flex items-center text-gray-600">
+                <span className="text-coinmind-income mr-2">🎤</span>
+                Voice & Chat
+              </div>
+              <div className="flex items-center text-gray-600">
+                <span className="text-coinmind-income mr-2">🌍</span>
+                Multi-Currency
+              </div>
+              <div className="flex items-center text-gray-600">
+                <span className="text-coinmind-income mr-2">🗣️</span>
+                Multi-Language
+              </div>
+              <div className="flex items-center text-gray-600">
+                <span className="text-coinmind-income mr-2">📊</span>
+                Export & Reports
+              </div>
+            </div>
+            
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:gap-6">
               <Button
                 href="https://www.coinmind-ai.com/auth/login"
-                color="gray"
-                className="w-full sm:w-auto bg-gray-900 text-white hover:bg-gray-800 text-sm px-6 py-2"
+                variant="solid"
+                color="primary"
+                className="w-full sm:w-auto text-sm px-8 py-3 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
-                Try Web App
+                Try Web App Free
               </Button>
               <div className="w-full sm:w-auto">
                 <AppStoreLink />
@@ -106,14 +139,36 @@ export function Hero() {
                 <GooglePlayLink />
               </div>
             </div>
+            
+            {/* Trust indicators */}
+            <div className="mt-8 pt-6 border-t border-gray-200">
+              <p className="text-xs text-gray-500 mb-3">Trusted by users worldwide</p>
+              <div className="flex items-center space-x-4 text-gray-400">
+                <div className="flex items-center">
+                  <span className="text-coinmind-income mr-1">★</span>
+                  <span className="text-sm">4.8/5</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-sm">10K+ Downloads</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-sm">50+ Countries</span>
+                </div>
+              </div>
+            </div>
           </div>
+          
           <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
             <BackgroundIllustration className="absolute top-4 left-1/2 h-[1026px] w-[1026px] -translate-x-1/3 mask-[linear-gradient(to_bottom,white_20%,transparent_75%)] stroke-gray-300/70 sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" />
             <div className="-mx-4 h-[448px] mask-[linear-gradient(to_bottom,white_60%,transparent)] px-9 sm:mx-0 lg:absolute lg:-inset-x-10 lg:-top-10 lg:-bottom-20 lg:h-auto lg:px-0 lg:pt-10 xl:-bottom-32">
-              <PhoneFrame className="mx-auto max-w-[366px]" priority>
+              <PhoneFrame className="mx-auto max-w-[366px] animate-float" priority>
                 <AppDemo />
               </PhoneFrame>
             </div>
+            
+            {/* Floating elements */}
+            <div className="absolute top-20 right-10 w-16 h-16 bg-gradient-to-br from-coinmind-income/20 to-coinmind-expense/20 rounded-full animate-pulse-glow hidden lg:block"></div>
+            <div className="absolute bottom-20 left-10 w-12 h-12 bg-gradient-to-br from-coinmind-accent/30 to-coinmind-primary/30 rounded-full animate-float hidden lg:block"></div>
           </div>
         </div>
       </Container>

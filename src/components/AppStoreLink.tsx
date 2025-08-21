@@ -4,7 +4,7 @@ export function AppStoreLink() {
   return (
     <Link
       href="#"
-      className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2 text-gray-900 hover:bg-gray-100 transition-colors text-sm border border-gray-200"
+      className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2 text-gray-900 hover:bg-gray-50 transition-all duration-200 text-sm border border-gray-200 hover:border-coinmind-accent/50 hover:shadow-lg transform hover:scale-105"
     >
       <div className="flex items-center">
         <div className="mr-3">
@@ -13,8 +13,8 @@ export function AppStoreLink() {
           </svg>
         </div>
         <div className="text-left">
-          <div className="text-xs uppercase tracking-wide">Download on the</div>
-          <div className="text-sm font-semibold">App Store</div>
+          <div className="text-xs uppercase tracking-wide text-gray-500">Download on the</div>
+          <div className="text-sm font-semibold text-coinmind-primary">App Store</div>
         </div>
       </div>
     </Link>

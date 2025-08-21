@@ -41,6 +41,7 @@
   --radius-4xl: 2rem;
   --radius-5xl: 2.5rem;
 
+  /* Enhanced CoinMind Brand Colors */
   --color-gray-50: oklch(0.985 0 0);
   --color-gray-100: oklch(0.97 0 0);
   --color-gray-200: oklch(0.922 0 0);
@@ -53,10 +54,21 @@
   --color-gray-900: oklch(0.205 0 0);
   --color-gray-950: oklch(0.145 0 0);
 
-  --color-coinmind-primary: oklch(0.205 0 0);
-  --color-coinmind-accent: oklch(0.708 0.05 60);
-  --color-coinmind-income: oklch(0.556 0.15 140);
-  --color-coinmind-expense: oklch(0.556 0.15 30);
+  /* CoinMind Brand Colors - Matching Mobile App */
+  --color-coinmind-primary: oklch(0.205 0 0); /* #18181b - Dark gray/black */
+  --color-coinmind-accent: oklch(0.708 0.05 60); /* #A3B1C6 - Light blue-gray */
+  --color-coinmind-income: oklch(0.556 0.15 140); /* #22c55e - Green for income */
+  --color-coinmind-expense: oklch(0.556 0.15 30); /* #D96B2B - Orange for expenses */
+  
+  /* Additional Brand Colors */
+  --color-coinmind-success: oklch(0.556 0.15 140); /* Green */
+  --color-coinmind-warning: oklch(0.556 0.15 30); /* Orange */
+  --color-coinmind-error: oklch(0.556 0.15 25); /* Red */
+  --color-coinmind-info: oklch(0.708 0.05 60); /* Blue-gray */
+  
+  /* Gradient Colors */
+  --color-coinmind-gradient-start: oklch(0.205 0 0); /* Dark start */
+  --color-coinmind-gradient-end: oklch(0.708 0.05 60); /* Light end */
 
   --font-sans: var(--font-inter);
 
@@ -75,10 +87,31 @@
       transform: rotate(-360deg);
     }
   }
+  
+  /* Enhanced animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(163, 177, 198, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(163, 177, 198, 0.6);
+    }
+  }
 }
 
 @theme inline {
   --animate-marquee: marquee var(--marquee-duration) linear infinite;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
 
   @keyframes marquee {
     100% {

@@ -49,7 +49,7 @@ function MobileNavLink(
   return (
     <PopoverButton
       as={Link}
-      className="block text-base/7 tracking-tight text-gray-700"
+      className="block text-base/7 tracking-tight text-gray-700 hover:text-coinmind-primary transition-colors duration-200"
       {...props}
     />
   )
@@ -57,12 +57,12 @@ function MobileNavLink(
 
 export function Header() {
   return (
-    <header>
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
       <nav>
-        <Container className="relative z-50 flex justify-between py-8">
+        <Container className="relative z-50 flex justify-between py-6">
           <div className="relative z-10 flex items-center gap-16">
-            <Link href="/" aria-label="Home">
-              <Logo className="h-10 w-auto" />
+            <Link href="/" aria-label="Home" className="group">
+              <Logo className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
             </Link>
             <div className="hidden lg:flex lg:gap-10">
               <NavLinks />
@@ -73,7 +73,7 @@ export function Header() {
               {({ open }) => (
                 <>
                   <PopoverButton
-                    className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 focus:not-data-focus:outline-hidden active:stroke-gray-900"
+                    className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-coinmind-primary focus:not-data-focus:outline-hidden active:stroke-gray-900 transition-colors duration-200"
                     aria-label="Toggle site navigation"
                   >
                     {({ open }) =>
@@ -105,7 +105,7 @@ export function Header() {
                             y: -32,
                             transition: { duration: 0.2 },
                           }}
-                          className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pt-32 pb-6 shadow-2xl shadow-gray-900/20"
+                          className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-white/95 backdrop-blur-md px-6 pt-32 pb-6 shadow-2xl shadow-gray-900/20 border border-gray-200/50"
                         >
                           <div className="space-y-4">
                             <MobileNavLink href="/#features">
@@ -123,10 +123,20 @@ export function Header() {
                             </MobileNavLink>
                           </div>
                           <div className="mt-8 flex flex-col gap-4">
-                            <Button href="https://www.coinmind-ai.com/auth/login" variant="outline">
+                            <Button 
+                              href="https://www.coinmind-ai.com/auth/login" 
+                              variant="outline"
+                              color="primary"
+                            >
                               Log in
                             </Button>
-                            <Button href="https://www.coinmind-ai.com/auth/signup">Try Web App</Button>
+                            <Button 
+                              href="https://www.coinmind-ai.com/auth/signup"
+                              variant="solid"
+                              color="primary"
+                            >
+                              Try Web App Free
+                            </Button>
                           </div>
                         </PopoverPanel>
                       </>
@@ -135,11 +145,21 @@ export function Header() {
                 </>
               )}
             </Popover>
-            <div className="flex items-center gap-6 max-lg:hidden">
-              <Button href="https://www.coinmind-ai.com/auth/login" variant="outline">
+            <div className="flex items-center gap-4 max-lg:hidden">
+              <Button 
+                href="https://www.coinmind-ai.com/auth/login" 
+                variant="outline"
+                color="primary"
+              >
                 Log in
               </Button>
-              <Button href="https://www.coinmind-ai.com/auth/signup">Try Web App</Button>
+              <Button 
+                href="https://www.coinmind-ai.com/auth/signup"
+                variant="solid"
+                color="primary"
+              >
+                Try Web App Free
+              </Button>
             </div>
           </div>
         </Container>

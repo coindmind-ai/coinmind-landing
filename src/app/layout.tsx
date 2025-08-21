@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'CoinMind - AI-Powered Personal Finance Assistant',
     description: 'Track expenses, analyze spending patterns, and get intelligent insights about your finances in any language.',
-    url: 'https://coinmind.vercel.app',
+    url: 'https://www.coinmind-ai.com',
     siteName: 'CoinMind',
     type: 'website',
   },

@@ -17,7 +17,7 @@ const plans = [
       'Perfect for getting started with personal finance tracking. Forever free.',
     button: {
       label: 'Get started for free',
-      href: 'https://coinmind.vercel.app/auth/signup',
+      href: 'https://www.coinmind-ai.com/auth/signup',
     },
     features: [
       '10 transactions per month (typing, voice)',
@@ -37,7 +37,7 @@ const plans = [
       'For serious users who want unlimited access and advanced features.',
     button: {
       label: 'Subscribe to Pro',
-      href: 'https://coinmind.vercel.app/auth/signup',
+      href: 'https://www.coinmind-ai.com/auth/signup',
     },
     features: [
       'Unlimited transactions',
@@ -171,7 +171,7 @@ function Plan({
               <CheckIcon
                 className={clsx(
                   'h-6 w-6 flex-none',
-                  featured ? 'text-white' : 'text-gray-900',
+                  featured ? 'text-black' : 'text-gray-900',
                 )}
               />
               <span className="ml-4">{feature}</span>

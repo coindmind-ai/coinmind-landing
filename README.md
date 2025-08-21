@@ -42,12 +42,12 @@ This is the official landing page for CoinMind, an AI-powered personal finance a
 
 ## Deployment
 
-The landing page is deployed on Vercel and accessible at [https://coinmind.vercel.app](https://coinmind.vercel.app).
+The landing page is deployed on Vercel and accessible at [https://www.coinmind-ai.com](https://www.coinmind-ai.com).
 
 ## Integration
 
 This landing page integrates with:
-- **Web App**: [https://coinmind.vercel.app](https://coinmind.vercel.app)
+- **Web App**: [https://www.coinmind-ai.com](https://www.coinmind-ai.com)
 - **Mobile App**: Available on App Store and Google Play
 - **Authentication**: Links to the main CoinMind web app for login/signup
 

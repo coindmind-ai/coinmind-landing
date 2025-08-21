@@ -18,18 +18,17 @@ export function CallToAction() {
             Start using your AI assistant today
           </h2>
           <p className="mt-4 text-lg text-gray-300">
-            Join thousands of users who are already using CoinMind's AI assistant to track expenses with voice commands. 
+            Join thousands of users who are already using CoinMind&apos;s AI assistant to track expenses with voice commands. 
             Get started in seconds with our free tier.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Button
-              href="https://coinmind.vercel.app/auth/signup"
-              color="gray"
-              className="bg-white text-gray-900 hover:bg-gray-100"
+              href="https://www.coinmind-ai.com/auth/signup"
+              className="bg-black text-gray-900 hover:bg-gray-100"
             >
               Try Web App
             </Button>
-            <AppStoreLink color="white" />
+            <AppStoreLink />
           </div>
         </div>
       </Container>

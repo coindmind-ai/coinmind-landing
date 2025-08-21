@@ -117,10 +117,10 @@ export function Header() {
                             <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
                           </div>
                           <div className="mt-8 flex flex-col gap-4">
-                            <Button href="https://coinmind.vercel.app/auth/login" variant="outline">
+                            <Button href="https://www.coinmind-ai.com/auth/login" variant="outline">
                               Log in
                             </Button>
-                            <Button href="https://coinmind.vercel.app/auth/signup">Try Web App</Button>
+                            <Button href="https://www.coinmind-ai.com/auth/signup">Try Web App</Button>
                           </div>
                         </PopoverPanel>
                       </>
@@ -130,10 +130,10 @@ export function Header() {
               )}
             </Popover>
             <div className="flex items-center gap-6 max-lg:hidden">
-              <Button href="https://coinmind.vercel.app/auth/login" variant="outline">
+              <Button href="https://www.coinmind-ai.com/auth/login" variant="outline">
                 Log in
               </Button>
-              <Button href="https://coinmind.vercel.app/auth/signup">Try Web App</Button>
+              <Button href="https://www.coinmind-ai.com/auth/signup">Try Web App</Button>
             </div>
           </div>
         </Container>

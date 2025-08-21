@@ -93,7 +93,7 @@ export function Hero() {
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-6">
               <Button
-                href="https://coinmind.vercel.app/auth/login"
+                href="https://www.coinmind-ai.com/auth/login"
                 color="gray"
                 className="w-full sm:w-auto bg-gray-900 text-white hover:bg-gray-800 text-sm px-6 py-2"
               >

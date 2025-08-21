@@ -1,21 +1,29 @@
-import { type Metadata } from 'next'
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 
 import { AuthLayout } from '@/components/AuthLayout'
 import { Button } from '@/components/Button'
 import { TextField } from '@/components/Fields'
 
-export const metadata: Metadata = {
-  title: 'Sign In',
-}
-
 export default function Login() {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsLoading(true)
+    
+    // Redirect to the main app login page
+    window.location.href = 'https://www.coinmind-ai.com/auth/login'
+  }
+
   return (
     <AuthLayout
       title="Sign in to account"
       subtitle={
         <>
-          Don’t have an account?{' '}
+          Don&apos;t have an account?{' '}
           <Link href="/register" className="text-cyan-600">
             Sign up
           </Link>{' '}
@@ -23,7 +31,7 @@ export default function Login() {
         </>
       }
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="space-y-6">
           <TextField
             label="Email address"
@@ -40,8 +48,8 @@ export default function Login() {
             required
           />
         </div>
-        <Button type="submit" color="cyan" className="mt-8 w-full">
-          Sign in to account
+        <Button type="submit" color="cyan" className="mt-8 w-full" disabled={isLoading}>
+          {isLoading ? 'Redirecting...' : 'Sign in to account'}
         </Button>
       </form>
     </AuthLayout>

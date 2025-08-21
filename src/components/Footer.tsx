@@ -70,9 +70,19 @@ export function Footer() {
               <span className="lg:hidden">Join newsletter</span>
             </Button>
           </form>
-          <p className="mt-6 text-sm text-gray-500 md:mt-0">
-            &copy; Copyright {new Date().getFullYear()}. All rights reserved.
-          </p>
+          <div className="mt-6 flex flex-col items-center gap-4 md:mt-0 md:flex-row md:gap-8">
+            <p className="text-sm text-gray-500">
+              &copy; Copyright {new Date().getFullYear()}. All rights reserved.
+            </p>
+            <div className="flex gap-6 text-sm">
+              <Link href="/privacy" className="text-gray-500 hover:text-gray-700">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-gray-500 hover:text-gray-700">
+                Terms of Service
+              </Link>
+            </div>
+          </div>
         </div>
       </Container>
     </footer>

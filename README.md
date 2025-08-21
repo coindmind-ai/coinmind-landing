@@ -58,4 +58,4 @@ This landing page integrates with:
 
 ## Contact
 
-For support or questions, contact us at support@coinmind.app
+For support or questions, contact us at support@coinmind-ai.com

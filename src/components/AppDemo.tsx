@@ -64,7 +64,7 @@ const sampleTransactions = [
 
 function StatusBar() {
   return (
-    <div className="flex items-center justify-between px-3 py-1 bg-white">
+    <div className="flex items-center justify-between px-2 sm:px-3 py-1 bg-white">
       <span className="text-xs font-medium text-gray-900">11:13</span>
       <div className="flex items-center space-x-1">
         <div className="flex space-x-0.5">
@@ -85,9 +85,9 @@ function StatusBar() {
 
 function CashFlowHeader() {
   return (
-    <div className="flex items-center justify-between p-3 bg-white border-b border-gray-100">
+    <div className="flex items-center justify-between p-2 sm:p-3 bg-white border-b border-gray-100">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">SAR 427.59</h1>
+        <h1 className="text-lg sm:text-2xl font-bold text-gray-900">SAR 427.59</h1>
         <p className="text-xs text-gray-500">Cash Flow</p>
       </div>
       <button className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors">
@@ -101,14 +101,14 @@ function CashFlowHeader() {
 
 function FilterBar() {
   return (
-    <div className="flex items-center space-x-2 p-3 bg-white border-b border-gray-100">
-      <button className="flex items-center space-x-1 px-3 py-1.5 bg-gray-100 rounded-lg text-xs font-medium text-gray-700 hover:bg-gray-200 transition-colors">
+    <div className="flex items-center space-x-1 sm:space-x-2 p-2 sm:p-3 bg-white border-b border-gray-100 overflow-x-auto">
+      <button className="flex items-center space-x-1 px-2 sm:px-3 py-1.5 bg-gray-100 rounded-lg text-xs font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap">
         <span>All Wallets</span>
         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </button>
-      <button className="flex items-center space-x-1 px-3 py-1.5 bg-gray-100 rounded-lg text-xs font-medium text-gray-700 hover:bg-gray-200 transition-colors">
+      <button className="flex items-center space-x-1 px-2 sm:px-3 py-1.5 bg-gray-100 rounded-lg text-xs font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap">
         <span>By years</span>
         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -120,16 +120,16 @@ function FilterBar() {
 
 function SpendingOverviewButton() {
   return (
-    <div className="p-3 bg-white border-b border-gray-100">
+    <div className="p-2 sm:p-3 bg-white border-b border-gray-100">
       <motion.button 
-        className="flex items-center justify-center space-x-2 w-full py-2 px-3 bg-gradient-to-r from-coinmind-primary to-coinmind-accent rounded-xl text-white text-sm font-medium hover:shadow-lg transition-all duration-200"
+        className="flex items-center justify-center space-x-2 w-full py-2 px-3 bg-gradient-to-r from-coinmind-primary to-coinmind-accent rounded-xl text-white text-xs sm:text-sm font-medium hover:shadow-lg transition-all duration-200"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        <span>Spending Overview</span>
+        <span className="whitespace-nowrap">Spending Overview</span>
         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
@@ -143,7 +143,7 @@ function TransactionItem({ transaction, index }: { transaction: any; index: numb
   
   return (
     <motion.div 
-      className="flex items-center space-x-3 p-3 hover:bg-gray-50 transition-colors cursor-pointer border-b border-gray-50 last:border-b-0"
+      className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 hover:bg-gray-50 transition-colors cursor-pointer border-b border-gray-50 last:border-b-0"
       whileHover={{ scale: 1.01, backgroundColor: '#f9fafb' }}
       whileTap={{ scale: 0.99 }}
       initial={{ opacity: 0, y: 20 }}
@@ -152,7 +152,7 @@ function TransactionItem({ transaction, index }: { transaction: any; index: numb
     >
       {/* Category Icon */}
       <div className={clsx(
-        "w-10 h-10 rounded-full flex items-center justify-center text-white text-base shadow-md",
+        "w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-white text-sm sm:text-base shadow-md flex-shrink-0",
         transaction.iconBg
       )}>
         {transaction.icon}
@@ -161,24 +161,24 @@ function TransactionItem({ transaction, index }: { transaction: any; index: numb
       {/* Transaction Details */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center justify-between mb-1">
-          <h4 className="font-bold text-gray-900 text-sm">{transaction.category}</h4>
+          <h4 className="font-bold text-gray-900 text-xs sm:text-sm truncate">{transaction.category}</h4>
           <span className={clsx(
-            "font-bold text-sm",
+            "font-bold text-xs sm:text-sm flex-shrink-0 ml-2",
             isIncome ? "text-coinmind-income" : "text-coinmind-expense"
           )}>
             {isIncome ? '+' : ''}SAR {Math.abs(transaction.amount).toFixed(2)}
           </span>
         </div>
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="text-xs text-gray-500 font-medium">{transaction.wallet}</span>
+          <div className="flex items-center space-x-1 sm:space-x-2 min-w-0">
+            <span className="text-xs text-gray-500 font-medium truncate">{transaction.wallet}</span>
             {transaction.description && (
-              <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-medium">
+              <span className="text-xs bg-gray-100 text-gray-600 px-1.5 sm:px-2 py-0.5 rounded-full font-medium truncate">
                 {transaction.description}
               </span>
             )}
           </div>
-          <span className="text-xs text-gray-400 font-medium">
+          <span className="text-xs text-gray-400 font-medium flex-shrink-0 ml-2">
             {isIncome ? '+' : ''}{transaction.conversionCurrency} {Math.abs(transaction.conversion).toLocaleString()}
           </span>
         </div>
@@ -191,8 +191,8 @@ function TransactionList() {
   return (
     <div className="flex-1 overflow-y-auto bg-white">
       {/* Date Header */}
-      <div className="flex items-center justify-between px-3 py-3 bg-gray-50 border-b border-gray-100">
-        <h3 className="font-bold text-gray-900 text-sm">Today</h3>
+      <div className="flex items-center justify-between px-2 sm:px-3 py-2 sm:py-3 bg-gray-50 border-b border-gray-100">
+        <h3 className="font-bold text-gray-900 text-xs sm:text-sm">Today</h3>
         <span className="text-xs font-bold text-coinmind-expense">-SAR 704.12</span>
       </div>
       
@@ -205,20 +205,20 @@ function TransactionList() {
       
       {/* Voice Record Icon */}
       <motion.div 
-        className="flex items-center justify-center p-6 bg-white  border-gray-100"
+        className="flex items-center justify-center p-4 sm:p-6 bg-white border-gray-100"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
         {/* Microphone Icon (Active/Recording) */}
-        <div className="relative -mt-6">
-          <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center shadow-lg">
-            <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+        <div className="relative -mt-4 sm:-mt-6">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 bg-black rounded-full flex items-center justify-center shadow-lg">
+            <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
             </svg>
           </div>
           {/* Active indicator */}
-          <div className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-green-500 rounded-full border-2 border-white shadow-sm"></div>
+          <div className="absolute -top-1 -right-1 sm:-top-1.5 sm:-right-1.5 w-4 h-4 sm:w-5 sm:h-5 bg-green-500 rounded-full border-2 border-white shadow-sm"></div>
         </div>
       </motion.div>
     </div>
@@ -228,11 +228,11 @@ function TransactionList() {
 function FloatingActionButton() {
   return (
     <motion.button
-      className="absolute bottom-3 right-3 w-8 h-8 bg-black rounded-full flex items-center justify-center text-white shadow-md hover:shadow-lg transition-all duration-200 z-10"
+      className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-7 h-7 sm:w-8 sm:h-8 bg-black rounded-full flex items-center justify-center text-white shadow-md hover:shadow-lg transition-all duration-200 z-10"
       whileHover={{ scale: 1.1, rotate: 90 }}
       whileTap={{ scale: 0.9 }}
     >
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
       </svg>
     </motion.button>

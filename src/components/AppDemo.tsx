@@ -202,6 +202,25 @@ function TransactionList() {
           <TransactionItem key={transaction.id} transaction={transaction} index={index} />
         ))}
       </div>
+      
+      {/* Voice Record Icon */}
+      <motion.div 
+        className="flex items-center justify-center p-6 bg-white  border-gray-100"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+      >
+        {/* Microphone Icon (Active/Recording) */}
+        <div className="relative -mt-6">
+          <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center shadow-lg">
+            <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
+            </svg>
+          </div>
+          {/* Active indicator */}
+          <div className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-green-500 rounded-full border-2 border-white shadow-sm"></div>
+        </div>
+      </motion.div>
     </div>
   )
 }

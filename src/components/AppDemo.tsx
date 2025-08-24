@@ -23,23 +23,23 @@ const sampleMessages = [
   },
   {
     id: 3,
-    content: "Great! I've added your grocery expense of $50.00 to your transactions. Your total spending this month is now $1,234.56. Would you like me to categorize this as 'Food & Dining'?",
+    content: "✅ Transaction added: $50.00\n🏷️ Category: Food & Dining\n🏪 Merchant: Grocery Store\n📅 Date: Yesterday\n\nYour total spending this month is now $1,234.56. Would you like me to adjust the category?",
     isUser: false,
     timestamp: new Date(Date.now() - 180000), // 3 minutes ago
-    suggestions: ["Yes, categorize as Food & Dining", "No, change category", "Show me my spending breakdown"]
+    suggestions: ["Keep category", "Change category", "Show spending breakdown"]
   },
   {
     id: 4,
-    content: "Yes, categorize as Food & Dining",
+    content: "Keep category",
     isUser: true,
     timestamp: new Date(Date.now() - 120000), // 2 minutes ago
   },
   {
     id: 5,
-    content: "Perfect! I've categorized your grocery expense as 'Food & Dining'. Your food spending this month is now $456.78. Is there anything else you'd like to track?",
+    content: "Perfect! Category confirmed. Your food spending this month is now $456.78. Is there anything else you'd like to track?",
     isUser: false,
     timestamp: new Date(Date.now() - 60000), // 1 minute ago
-    suggestions: ["Add another transaction", "Show me my budget", "Generate spending report"]
+    suggestions: ["Add another transaction", "Show my budget", "Generate report"]
   }
 ]
 

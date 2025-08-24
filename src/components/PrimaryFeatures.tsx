@@ -42,7 +42,7 @@ const features = [
       'Simply speak or type to CoinMind about your expenses in any language. Our AI understands natural language and automatically categorizes your transactions with intelligent insights.',
     icon: DeviceUserIcon,
     screen: ChatScreen,
-    benefits: ['Natural language processing', 'Multi-language support', 'Smart categorization'],
+    benefits: ['Natural language processing', 'Multi-language support', 'Automatic categorization'],
   },
   {
     name: 'Multi-Language Support',

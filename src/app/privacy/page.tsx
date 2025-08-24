@@ -30,13 +30,13 @@ export default function PrivacyPolicy() {
             <h2 className="text-xl font-semibold text-gray-900 mb-4">1. Introduction</h2>
             <div className="space-y-4 text-sm leading-relaxed text-gray-700">
               <p>
-                This Privacy Policy applies to the CoinMind application (hereby referred to as &quot;Application&quot;), developed by CoinMind Inc. (hereby referred to as &quot;Service Provider&quot;). The Application is available as a free service with optional subscription plans.
+                This Privacy Policy applies to the CoinMind AI (hereby referred to as &quot;Application&quot;), developed by CoinMind-ai Team. (hereby referred to as &quot;Service Provider&quot;). The Application is available as a free service with optional subscription plans.
               </p>
               <p>
-                CoinMind (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your information when you use our AI-powered personal finance tracking application.
+                CoinMind-ai (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your information when you use our AI-powered personal finance tracking application.
               </p>
               <p>
-                By using CoinMind, you consent to the data practices described in this policy. If you do not agree with our policies and practices, please do not use our Service.
+                By using CoinMind-ai, you consent to the data practices described in this policy. If you do not agree with our policies and practices, please do not use our Service.
               </p>
             </div>
           </div>
@@ -49,7 +49,7 @@ export default function PrivacyPolicy() {
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li><strong>Account Information:</strong> Email address, name, and profile information when you create an account</li>
                 <li><strong>Username:</strong> Used to personalize your experience within the app</li>
-                <li><strong>Authentication Data:</strong> OAuth provider information (Google, GitHub, Apple) when you sign in</li>
+                <li><strong>Authentication Data:</strong> OAuth provider information (Google) when you sign in</li>
                 <li><strong>Contact Information:</strong> Email address for account notifications and support</li>
               </ul>
 
@@ -121,7 +121,7 @@ export default function PrivacyPolicy() {
                 <li><strong>Portability:</strong> Request export of your data in a machine-readable format</li>
                 <li><strong>Objection:</strong> Object to certain processing of your data</li>
               </ul>
-              <p>To exercise these rights, contact us at privacy@coinmind.com.</p>
+              <p>To exercise these rights, contact us at privacy@coinmind-ai.com.</p>
             </div>
           </div>
 
@@ -130,9 +130,9 @@ export default function PrivacyPolicy() {
             <div className="space-y-4 text-sm leading-relaxed text-gray-700">
               <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
               <ul className="list-none space-y-1 ml-4">
-                <li><strong>Email:</strong> privacy@coinmind.com</li>
-                <li><strong>Data Protection Officer:</strong> dpo@coinmind.com</li>
-                <li><strong>Website:</strong> https://coinmind.com</li>
+                <li><strong>Email:</strong> support@coinmind-ai.com</li>
+                <li><strong>Data Protection Officer:</strong> support@coinmind-ai.com</li>
+                <li><strong>Website:</strong> https://coinmind-ai.com</li>
               </ul>
               <p>
                 For EU users, you also have the right to lodge a complaint with your local data protection authority.
@@ -142,7 +142,7 @@ export default function PrivacyPolicy() {
 
           {/* Footer */}
           <div className="text-center text-sm text-gray-500 py-8">
-            <p>Copyright © 2025 CoinMind. All rights reserved.</p>
+            <p>Copyright © 2025 CoinMind-ai. All rights reserved.</p>
           </div>
         </div>
       </Container>

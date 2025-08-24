@@ -30,10 +30,10 @@ export default function TermsOfService() {
             <h2 className="text-xl font-semibold text-gray-900 mb-4">1. Acceptance of Terms</h2>
             <div className="space-y-4 text-sm leading-relaxed text-gray-700">
               <p>
-                By accessing and using CoinMind (&quot;the Service&quot;), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+                By accessing and using CoinMind-ai (&quot;the Service&quot;), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
               </p>
               <p>
-                CoinMind is an AI-powered personal finance tracking application that provides conversational transaction entry, receipt processing, and financial analytics. The Service is operated by CoinMind (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;).
+                CoinMind-ai is an AI-powered personal finance tracking application that provides conversational transaction entry, receipt processing, and financial analytics. The Service is operated by CoinMind-ai team (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;).
               </p>
             </div>
           </div>
@@ -41,7 +41,7 @@ export default function TermsOfService() {
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">2. Description of Service</h2>
             <div className="space-y-4 text-sm leading-relaxed text-gray-700">
-              <p>CoinMind provides the following services:</p>
+              <p>CoinMind-ai provides the following services:</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li><strong>AI-Powered Chat Interface:</strong> Natural language transaction entry using Google Gemini AI for parsing and categorizing financial transactions</li>
                 <li><strong>Voice-to-Text Processing:</strong> Speech recognition capabilities for hands-free transaction entry</li>
@@ -50,7 +50,7 @@ export default function TermsOfService() {
                 <li><strong>Financial Analytics:</strong> Spending analysis, category breakdowns, and financial insights</li>
                 <li><strong>Multi-Currency Support:</strong> Transaction tracking in multiple currencies with automatic conversion</li>
                 <li><strong>Data Export:</strong> Export functionality for financial records</li>
-                <li><strong>User Authentication:</strong> Secure account management with OAuth providers (Google, GitHub, Apple)</li>
+                <li><strong>User Authentication:</strong> Secure account management with OAuth providers (Google)</li>
               </ul>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function TermsOfService() {
               <p>We strive to provide reliable service but cannot guarantee:</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li>Uninterrupted or error-free operation</li>
-                <li>100% accuracy in AI processing or OCR results</li>
+                <li>98% accuracy in AI processing or OCR results</li>
                 <li>Compatibility with all devices or browsers</li>
                 <li>Real-time data synchronization</li>
               </ul>
@@ -140,7 +140,7 @@ export default function TermsOfService() {
             <h2 className="text-xl font-semibold text-gray-900 mb-4">8. Intellectual Property</h2>
             <div className="space-y-4 text-sm leading-relaxed text-gray-700">
               <p>
-                The Service and its original content, features, and functionality are owned by CoinMind and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.
+                The Service and its original content, features, and functionality are owned by CoinMind-ai and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.
               </p>
               <p>
                 You retain ownership of your financial data and user-generated content. You grant us a limited license to process your data to provide the Service.
@@ -157,7 +157,7 @@ export default function TermsOfService() {
               </p>
               <p><strong>Limitation of Liability:</strong></p>
               <p>
-                In no event shall CoinMind be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.
+                In no event shall CoinMind-ai be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.
               </p>
               <p>
                 We are not responsible for financial decisions made based on our analytics or recommendations.
@@ -187,15 +187,15 @@ export default function TermsOfService() {
             <div className="space-y-4 text-sm leading-relaxed text-gray-700">
               <p>If you have any questions about these Terms of Service, please contact us:</p>
               <ul className="list-none space-y-1 ml-4">
-                <li>Email: legal@coinmind.com</li>
-                <li>Website: https://coinmind.com</li>
+                <li>Email: support@coinmind-ai.com</li>
+                <li>Website: https://coinmind-ai.com</li>
               </ul>
             </div>
           </div>
 
           {/* Footer */}
           <div className="text-center text-sm text-gray-500 py-8">
-            <p>Copyright © 2025 CoinMind. All rights reserved.</p>
+            <p>Copyright © 2025 CoinMind-ai. All rights reserved.</p>
           </div>
         </div>
       </Container>

@@ -47,6 +47,11 @@ const faqs = [
         'Our AI is trained on millions of transactions and provides highly accurate categorization. You can always manually adjust categories if needed.',
     },
     {
+      question: 'How does automatic categorization work?',
+      answer:
+        'Our AI analyzes your voice input, text messages, and receipt photos to automatically assign the most appropriate category. It learns from your spending patterns and gets smarter over time, supporting 170+ languages.',
+    },
+    {
       question: 'Is CoinMind available on mobile?',
       answer:
         'Yes! CoinMind is available as both a web app and mobile app, so you can track expenses on any device, anywhere.',
@@ -115,7 +120,7 @@ export function Faqs() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:support@coinmind.app"
+                href="mailto:support@coinmind-ai.com"
                 className="inline-flex items-center justify-center rounded-lg bg-coinmind-primary px-6 py-3 text-sm font-semibold text-white hover:bg-coinmind-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 Contact Support

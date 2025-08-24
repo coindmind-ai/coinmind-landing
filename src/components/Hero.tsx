@@ -100,26 +100,26 @@ export function Hero() {
             
             <p className="mt-6 text-lg text-gray-600 leading-relaxed">
               Simply <span className="font-bold text-coinmind-primary">speak and chat</span> with CoinMind to add and track your income & expenses in any language. 
-              <span className="font-semibold text-coinmind-primary"> Our advanced AI understands natural language</span> and automatically categorizes your transactions, giving you intelligent insights to make smarter financial decisions.
+              <span className="font-semibold text-coinmind-primary"> Our advanced AI understands natural language</span> and <span className="font-semibold text-coinmind-primary">automatically categorizes your transactions</span>, giving you intelligent insights to make smarter financial decisions.
             </p>
             
             {/* Key Benefits */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-gray-600 font-semibold">
                 <span className="text-coinmind-income mr-2">🎤</span>
                 Voice & Chat
               </div>
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-gray-600 font-semibold">
                 <span className="text-coinmind-income mr-2">🌍</span>
                 Multi-Currency
               </div>
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-gray-600 font-semibold">
                 <span className="text-coinmind-income mr-2">🗣️</span>
                 Multi-Language
               </div>
-              <div className="flex items-center text-gray-600">
-                <span className="text-coinmind-income mr-2">📊</span>
-                Export & Reports
+              <div className="flex items-center text-gray-600 font-semibold">
+                <span className="text-coinmind-income mr-2">🏷️</span>
+                Auto-Categorize
               </div>
             </div>
             

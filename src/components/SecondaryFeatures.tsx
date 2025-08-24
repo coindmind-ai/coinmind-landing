@@ -34,9 +34,9 @@ const features = [
     icon: DeviceLockIcon,
   },
   {
-    name: 'Smart AI Categorization',
+    name: 'Automatic Categorization',
     description:
-      'Our AI automatically categorizes your transactions from voice input, saving you time and providing better insights.',
+      'Our AI automatically categorizes your transactions from voice input, receipt photos, and text. No manual categorization needed - just speak naturally and let AI do the work.',
     icon: DeviceChartIcon,
   },
 ]

@@ -124,14 +124,14 @@ export function Header() {
                           </div>
                           <div className="mt-8 flex flex-col gap-4">
                             <Button 
-                              href="https://www.coinmind-ai.com/auth/login" 
+                              href="https://app.coinmind-ai.com/auth/login" 
                               variant="outline"
                               color="primary"
                             >
                               Log in
                             </Button>
                             <Button 
-                              href="https://www.coinmind-ai.com/auth/signup"
+                              href="https://app.coinmind-ai.com/auth/signup"
                               variant="solid"
                               color="primary"
                             >
@@ -147,14 +147,14 @@ export function Header() {
             </Popover>
             <div className="flex items-center gap-4 max-lg:hidden">
               <Button 
-                href="https://www.coinmind-ai.com/auth/login" 
+                href="https://app.coinmind-ai.com/auth/login" 
                 variant="outline"
                 color="primary"
               >
                 Log in
               </Button>
               <Button 
-                href="https://www.coinmind-ai.com/auth/signup"
+                href="https://app.coinmind-ai.com/auth/signup"
                 variant="solid"
                 color="primary"
               >

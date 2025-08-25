@@ -126,7 +126,7 @@ export function Faqs() {
                 Contact Support
               </a>
               <a
-                href="https://www.coinmind-ai.com/auth/signup"
+                href="https://app.coinmind-ai.com/auth/signup"
                 className="inline-flex items-center justify-center rounded-lg border border-coinmind-primary/30 px-6 py-3 text-sm font-semibold text-coinmind-primary hover:bg-coinmind-primary/5 transition-all duration-200"
               >
                 Try CoinMind Free

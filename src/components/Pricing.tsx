@@ -121,6 +121,15 @@ function Plan({
         </div>
       )}
       
+      {/* Coming Soon Badge for Pro Tier */}
+      {featured && (
+        <div className="absolute -top-1 -right-1">
+          <span className="inline-flex items-center px-1 py-0.5 rounded-full text-xs font-bold bg-red-500 text-white shadow-md border border-red-400 transform rotate-12">
+            COMING SOON!
+          </span>
+        </div>
+      )}
+      
       <h3
         className={clsx(
           'flex items-center text-lg font-bold',

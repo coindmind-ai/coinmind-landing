@@ -20,13 +20,12 @@ export function AppStoreLink() {
         </div>
       </Link>
       
-      {/* Enhanced Diagonal Coming Soon Banner */}
-      <div className="absolute -top-1 -left-1 w-24 h-7 bg-gradient-to-r from-red-500 to-red-600 transform -rotate-12 origin-top-left z-10 flex items-center justify-center shadow-lg border border-red-400">
-        <span className="text-white text-xs font-bold transform rotate-12 tracking-wide">COMING SOON!</span>
+      {/* Coming Soon Corner Label */}
+      <div className="absolute -top-1 -left-1">
+        <span className="inline-flex items-center px-1 py-0.5 rounded-full text-xs font-bold bg-red-500 text-white shadow-md border border-red-400 transform -rotate-12">
+          COMING SOON!
+        </span>
       </div>
-      
-      {/* Subtle shadow overlay for depth */}
-      <div className="absolute -top-1 -left-1 w-24 h-7 bg-black/10 transform -rotate-12 origin-top-left z-5"></div>
     </div>
   )
 }

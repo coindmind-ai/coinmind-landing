@@ -37,11 +37,11 @@ const plans = [
     description:
       'For serious users who want unlimited access and advanced features.',
     button: {
-      label: 'Subscribe to Pro',
+      label: 'Coming Soon',
       href: 'https://www.coinmind-ai.com/auth/signup',
     },
     features: [
-      'Unlimited transactions',
+      'Extended transactions',
       'Advanced receipt OCR',
       'Multi-currency support (170+ currencies)',
       'Advanced analytics (trends, predictions, insights)',
@@ -117,6 +117,15 @@ function Plan({
         <div className="mb-4">
           <span className="inline-flex items-center justify-center w-full rounded-full bg-coinmind-income px-4 py-1 text-xs font-semibold text-white shadow-lg">
             {badge}
+          </span>
+        </div>
+      )}
+      
+      {/* Coming Soon Badge for Pro Tier */}
+      {featured && (
+        <div className="absolute -top-1 -right-1">
+          <span className="inline-flex items-center px-1 py-0.5 rounded-full text-xs font-bold bg-red-500 text-white shadow-md border border-red-400 transform rotate-12">
+            INSTEAD
           </span>
         </div>
       )}
@@ -208,12 +217,12 @@ function Plan({
       
       <Button
         href={button.href}
-        color={featured ? 'gray' : 'gray'}
+        color={featured ? 'white' : 'primary'}
         className={clsx(
           'mt-8 w-full text-base font-semibold py-3 transition-all duration-300 transform hover:scale-105',
           featured 
-            ? 'bg-white text-coinmind-primary hover:bg-gray-100 shadow-lg hover:shadow-xl' 
-            : 'bg-gradient-to-r from-coinmind-primary to-coinmind-primary/90 text-white hover:from-coinmind-primary/90 hover:to-coinmind-primary shadow-lg hover:shadow-xl'
+            ? 'shadow-lg hover:shadow-xl' 
+            : 'shadow-lg hover:shadow-xl'
         )}
         aria-label={`Get started with the ${name} plan for ${price}`}
       >
@@ -258,27 +267,40 @@ export function Pricing() {
               className={({ checked }) =>
                 clsx(
                   checked
-                    ? 'bg-coinmind-primary text-white shadow-sm'
-                    : 'text-gray-900',
-                  'cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-coinmind-primary focus:ring-offset-2',
+                    ? 'bg-coinmind-primary shadow-sm'
+                    : '',
+                  'cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-coinmind-primary focus:ring-offset-2',
                 )
               }
             >
-              Monthly
+              <span className={clsx(
+                activePeriod === 'Monthly' ? 'text-white' : 'text-gray-900'
+              )}>
+                Monthly
+              </span>
             </Radio>
             <Radio
               value="Annually"
               className={({ checked }) =>
                 clsx(
                   checked
-                    ? 'bg-coinmind-primary text-white shadow-sm'
-                    : 'text-gray-900',
-                  'cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-coinmind-primary focus:ring-offset-2',
+                    ? 'bg-coinmind-primary shadow-sm'
+                    : '',
+                  'cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-coinmind-primary focus:ring-offset-2',
                 )
               }
             >
-              Annually
-              <span className="ml-1 text-xs text-coinmind-income">Save 17%</span>
+              <span className={clsx(
+                activePeriod === 'Annually' ? 'text-white' : 'text-gray-900'
+              )}>
+                Annually
+              </span>
+              <span className={clsx(
+                'ml-1 text-xs',
+                activePeriod === 'Annually' ? 'text-green-400' : 'text-coinmind-income'
+              )}>
+                Get 2 months free
+              </span>
             </Radio>
           </RadioGroup>
         </div>

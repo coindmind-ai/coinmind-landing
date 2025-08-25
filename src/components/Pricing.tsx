@@ -278,7 +278,7 @@ export function Pricing() {
               }
             >
               Annually
-              <span className="ml-1 text-xs text-coinmind-income">Save 17%</span>
+              <span className="ml-1 text-xs text-coinmind-income">Get 2 months free</span>
             </Radio>
           </RadioGroup>
         </div>

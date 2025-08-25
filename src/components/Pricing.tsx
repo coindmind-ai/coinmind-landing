@@ -37,7 +37,7 @@ const plans = [
     description:
       'For serious users who want unlimited access and advanced features.',
     button: {
-      label: 'Subscribe to Pro',
+      label: 'Coming Soon',
       href: 'https://www.coinmind-ai.com/auth/signup',
     },
     features: [
@@ -125,7 +125,7 @@ function Plan({
       {featured && (
         <div className="absolute -top-1 -right-1">
           <span className="inline-flex items-center px-1 py-0.5 rounded-full text-xs font-bold bg-red-500 text-white shadow-md border border-red-400 transform rotate-12">
-            COMING SOON!
+            INSTEAD
           </span>
         </div>
       )}

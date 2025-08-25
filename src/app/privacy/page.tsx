@@ -121,7 +121,7 @@ export default function PrivacyPolicy() {
                 <li><strong>Portability:</strong> Request export of your data in a machine-readable format</li>
                 <li><strong>Objection:</strong> Object to certain processing of your data</li>
               </ul>
-              <p>To exercise these rights, contact us at privacy@coinmind-ai.com.</p>
+              <p>To exercise these rights, contact us at support@coinmind-ai.com.</p>
             </div>
           </div>
 

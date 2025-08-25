@@ -252,7 +252,7 @@ export function Pricing() {
             Simple, transparent pricing
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            Choose the plan that fits your needs. Start free and upgrade when you're ready.
+            {`Choose the plan that fits your needs. Start free and upgrade when you're ready.`}
           </p>
         </div>
         

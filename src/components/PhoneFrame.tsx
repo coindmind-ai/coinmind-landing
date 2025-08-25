@@ -59,7 +59,7 @@ function VoiceRecordingFeature() {
         <div className="bg-gray-50 rounded-lg p-4">
           <div className="text-sm text-gray-600 mb-2">Transcription</div>
           <div className="text-gray-900 font-medium">
-            "I spent fifty dollars on groceries at Walmart today"
+            {`"I spent fifty dollars on groceries at Walmart today"`}
           </div>
         </div>
         
@@ -86,10 +86,10 @@ function VoiceRecordingFeature() {
         <div className="bg-gray-50 rounded-lg p-4">
           <div className="text-sm font-medium text-gray-900 mb-2">Try saying:</div>
           <div className="space-y-1 text-xs text-gray-600">
-            <div>• "I spent $25 on lunch"</div>
-            <div>• "Paid 100 riyals for gas"</div>
-            <div>• "Coffee shop, $8.50"</div>
-            <div>• "دفعت 50 ريال على الطعام"</div>
+            <div>• {`"I spent $25 on lunch"`}</div>
+            <div>• {`"Paid 100 riyals for gas"`}</div>
+            <div>• {`"Coffee shop, $8.50"`}</div>
+            <div>• {`"دفعت 50 ريال على الطعام"`}</div>
           </div>
         </div>
       </div>
@@ -420,7 +420,7 @@ function DashboardFeature() {
       {/* Header */}
       <div className="p-4 bg-white border-b border-gray-200">
         <div className="text-xl font-bold text-gray-900 mb-2">Dashboard</div>
-        <div className="text-sm text-gray-600">Welcome back! Here's your financial overview</div>
+        <div className="text-sm text-gray-600">{`Welcome back! Here's your financial overview`}</div>
       </div>
       
       {/* Balance Cards */}

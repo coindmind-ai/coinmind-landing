@@ -37,7 +37,7 @@ export function AutomaticCategorization() {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Voice & Chat Categorization</h3>
                   <p className="text-gray-600">
-                    Simply say "I spent $50 on groceries" and our AI automatically categorizes it as "Food & Dining" with the correct amount and date.
+                    Simply say &ldquo;I spent $50 on groceries&rdquo; and our AI automatically categorizes it as &ldquo;Food & Dining&rdquo; with the correct amount and date.
                   </p>
                 </div>
               </div>
@@ -115,7 +115,7 @@ export function AutomaticCategorization() {
                     </div>
                     <span className="text-sm font-medium text-gray-700">You</span>
                   </div>
-                  <p className="text-gray-800">"I spent $35 on lunch at McDonald's"</p>
+                  <p className="text-gray-800">&ldquo;I spent $35 on lunch at McDonald&apos;s&rdquo;</p>
                 </div>
 
                 <div className="bg-white rounded-2xl p-4 border border-gray-200">
@@ -128,7 +128,7 @@ export function AutomaticCategorization() {
                   <div className="space-y-2">
                     <p className="text-gray-800">✅ Transaction added: <strong>$35.00</strong></p>
                     <p className="text-gray-800">🏷️ Category: <strong>Food & Dining</strong></p>
-                    <p className="text-gray-800">🏪 Merchant: <strong>McDonald's</strong></p>
+                    <p className="text-gray-800">🏪 Merchant: <strong>McDonald&apos;s</strong></p>
                     <p className="text-gray-800">📅 Date: <strong>Today</strong></p>
                   </div>
                 </div>
@@ -140,7 +140,7 @@ export function AutomaticCategorization() {
                     </div>
                     <span className="text-sm font-medium text-gray-700">You</span>
                   </div>
-                  <p className="text-gray-800">"Paid $120 for gas"</p>
+                  <p className="text-gray-800">&ldquo;Paid $120 for gas&rdquo;</p>
                 </div>
 
                 <div className="bg-white rounded-2xl p-4 border border-gray-200">

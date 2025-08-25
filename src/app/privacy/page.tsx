@@ -1,5 +1,35 @@
+import { type Metadata } from 'next'
 import Link from 'next/link'
 import { Container } from '@/components/Container'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy - CoinMind AI Expense Tracker',
+  description: 'CoinMind AI expense tracker privacy policy. Learn how we protect your financial data with bank-level encryption, secure OCR processing, and GDPR compliance. Your expense data stays private.',
+  keywords: [
+    'expense tracker privacy',
+    'financial data security',
+    'secure expense tracking',
+    'GDPR compliant expense tracker',
+    'encrypted expense app',
+    'private expense tracking',
+  ],
+  openGraph: {
+    title: 'Privacy Policy - CoinMind AI Expense Tracker',
+    description: 'Bank-level security for your expense data. Learn how CoinMind protects your privacy with encryption and GDPR compliance.',
+    url: 'https://coinmind-ai.com/privacy',
+    images: [
+      {
+        url: '/api/og?title=Privacy%20Policy&description=Bank-level%20security%20for%20your%20expense%20data',
+        width: 1200,
+        height: 630,
+        alt: 'CoinMind Privacy Policy',
+      },
+    ],
+  },
+  alternates: {
+    canonical: 'https://coinmind-ai.com/privacy',
+  },
+}
 
 export default function PrivacyPolicy() {
   return (

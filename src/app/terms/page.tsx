@@ -1,5 +1,33 @@
+import { type Metadata } from 'next'
 import Link from 'next/link'
 import { Container } from '@/components/Container'
+
+export const metadata: Metadata = {
+  title: 'Terms of Service - CoinMind AI Expense Tracker',
+  description: 'Terms of service for CoinMind AI expense tracker app. Understand your rights using our voice & chat expense tracking, receipt OCR scanning, and multi-language support features.',
+  keywords: [
+    'expense tracker terms',
+    'AI expense app terms of service',
+    'expense tracking app agreement',
+    'financial app terms',
+  ],
+  openGraph: {
+    title: 'Terms of Service - CoinMind AI Expense Tracker',
+    description: 'Terms for using CoinMind AI expense tracker with voice, chat, and receipt OCR features.',
+    url: 'https://coinmind-ai.com/terms',
+    images: [
+      {
+        url: '/api/og?title=Terms%20of%20Service&description=AI%20Expense%20Tracker%20App%20Agreement',
+        width: 1200,
+        height: 630,
+        alt: 'CoinMind Terms of Service',
+      },
+    ],
+  },
+  alternates: {
+    canonical: 'https://coinmind-ai.com/terms',
+  },
+}
 
 export default function TermsOfService() {
   return (

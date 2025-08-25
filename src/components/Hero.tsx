@@ -129,7 +129,7 @@ export function Hero() {
             
             <div className="mt-8 sm:mt-10 flex flex-col gap-3 sm:gap-4 sm:flex-row sm:gap-6">
               <Button
-                href="https://www.coinmind-ai.com/auth/login"
+                href="https://app.coinmind-ai.com/auth/signup"
                 variant="solid"
                 color="primary"
                 className="w-full sm:w-auto text-sm px-6 sm:px-8 py-3 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"

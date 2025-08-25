@@ -59,7 +59,7 @@ export function CallToAction() {
           
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Button
-              href="https://www.coinmind-ai.com/auth/signup"
+              href="https://app.coinmind-ai.com/auth/signup"
               variant="solid"
               color="white"
               className="font-semibold px-8 py-3"

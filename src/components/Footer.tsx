@@ -98,6 +98,9 @@ export function Footer() {
               <Link href="/terms" className="text-gray-500 hover:text-coinmind-primary transition-colors duration-200">
                 Terms of Service
               </Link>
+              <Link href="/data-deletion-request" className="text-gray-500 hover:text-coinmind-primary transition-colors duration-200">
+                Data Deletion
+              </Link>
             </div>
           </div>
         </div>

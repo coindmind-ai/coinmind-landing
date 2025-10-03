@@ -67,8 +67,8 @@ export function CallToAction() {
               Try Web App Free
             </Button>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-2">
-              <AppStoreLink />
               <GooglePlayLink />
+              <AppStoreLink />
             </div>
           </div>
           

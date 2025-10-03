@@ -137,10 +137,10 @@ export function Hero() {
                 Try Web App Free
               </Button>
               <div className="w-full sm:w-auto">
-                <AppStoreLink />
+                <GooglePlayLink />
               </div>
               <div className="w-full sm:w-auto">
-                <GooglePlayLink />
+                <AppStoreLink />
               </div>
             </div>
             

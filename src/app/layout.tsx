@@ -1,8 +1,9 @@
 import { type Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, IBM_Plex_Sans_Arabic } from 'next/font/google'
 import clsx from 'clsx'
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { LanguageProvider } from '@/components/LanguageProvider'
 
 import '@/styles/tailwind.css'
 
@@ -12,56 +13,57 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
+const ibmPlexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ['arabic'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-arabic',
+})
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://coinmind-ai.com'),
+  metadataBase: new URL('https://www.coinmind-ai.com'),
   title: {
-    template: '%s - CoinMind AI Expense Tracker',
-    default: 'CoinMind - AI Expense Tracker with Voice & Chat | Track Spending in Any Language',
+    template: '%s | CoinMind AI',
+    default:
+      'CoinMind AI — Voice, Chat & Multi-Currency Personal Finance Assistant',
   },
   description:
-    'AI expense tracker app with voice input, receipt OCR scanning, and multi-language support. Track spending by simply speaking or chatting. Automatic categorization, smart insights, and supports 170+ languages. Free expense tracking with AI.',
+    'Log expenses and income naturally by voice, chat, or receipt photo in English, Arabic, and dozens of languages. Supports 170+ currencies with automatic conversion across Web & Android.',
   keywords: [
-    'AI expense tracker', 
-    'expense tracking app', 
-    'voice expense tracker',
-    'receipt scanner app',
-    'OCR receipt scanner',
-    'spending tracker',
-    'money tracking app',
-    'budget tracker app',
-    'personal finance tracker',
-    'AI money manager',
-    'voice to expense',
-    'chat expense tracker',
-    'multi-language expense tracker',
-    'automatic expense categorization',
+    'AI expense tracker',
+    'voice expense tracking',
+    'multi-currency expense tracker',
+    'AI personal finance assistant',
     'smart expense tracker',
-    'expense manager app',
-    'AI financial tracker',
-    'voice activated expense tracker',
-    'natural language expense tracking',
-    'free expense tracker'
+    'AI receipt scanner for expenses',
+    'expense tracker for expats',
+    'multi-currency budget app for travelers',
+    'track expenses by voice in any language',
+    'Arabic AI expense tracker',
+    'CoinMind AI',
   ],
-  authors: [{ name: 'CoinMind Team' }],
-  creator: 'CoinMind',
-  publisher: 'CoinMind',
-  applicationName: 'CoinMind AI Expense Tracker',
+  authors: [{ name: 'CoinMind AI Team' }],
+  creator: 'CoinMind AI',
+  publisher: 'CoinMind AI',
+  applicationName: 'CoinMind AI',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: 'CoinMind - AI Expense Tracker with Voice & Chat',
-    description: 'Track expenses instantly by speaking or chatting in any language. AI-powered expense tracker with receipt OCR, automatic categorization, and smart insights. Supports 170+ languages.',
-    url: 'https://coinmind-ai.com',
-    siteName: 'CoinMind',
+    title:
+      'CoinMind AI — Voice, Chat & Multi-Currency Personal Finance Assistant',
+    description:
+      'Say what you spent. CoinMind logs, converts across 170+ currencies, and categorizes your finances on Web & Android.',
+    url: 'https://www.coinmind-ai.com',
+    siteName: 'CoinMind AI',
     images: [
       {
         url: '/api/og',
         width: 1200,
         height: 630,
-        alt: 'CoinMind AI Expense Tracker - Voice & Chat Expense Tracking',
+        alt: 'CoinMind AI — Voice, Chat & Multi-Currency Finance Assistant',
       },
     ],
     locale: 'en_US',
@@ -69,11 +71,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CoinMind - AI Expense Tracker with Voice & Chat',
-    description: 'Track expenses instantly by speaking or chatting. AI-powered with receipt OCR & 170+ languages support.',
+    title:
+      'CoinMind AI — Voice, Chat & Multi-Currency Personal Finance Assistant',
+    description:
+      'Speak, chat, or scan receipts in any language with automatic conversion across 170+ currencies.',
     images: ['/api/og'],
-    creator: '@coinmind',
-    site: '@coinmind',
   },
   robots: {
     index: true,
@@ -87,7 +89,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://coinmind-ai.com',
+    canonical: 'https://www.coinmind-ai.com',
   },
   category: 'finance',
 }
@@ -98,9 +100,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={clsx('bg-gray-50 antialiased', inter.variable)}>
-      <body className="font-sans">
-        {children}
+    <html
+      lang="en"
+      dir="ltr"
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+      className={clsx(
+        'bg-[#fbfbfb] antialiased',
+        inter.variable,
+        ibmPlexArabic.variable,
+      )}
+    >
+      <body className="flex min-h-screen flex-col font-sans text-gray-900">
+        <LanguageProvider>{children}</LanguageProvider>
         <Analytics />
         <SpeedInsights />
       </body>

@@ -16,10 +16,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Privacy Policy - CoinMind AI Expense Tracker',
     description: 'Bank-level security for your expense data. Learn how CoinMind protects your privacy with encryption and GDPR compliance.',
-    url: 'https://coinmind-ai.com/privacy',
+    url: 'https://www.coinmind-ai.com/privacy',
     images: [
       {
-        url: '/api/og?title=Privacy%20Policy&description=Bank-level%20security%20for%20your%20expense%20data',
+        url: '/api/og?title=Privacy%20Policy&description=Encrypted%20security%20for%20your%20financial%20data',
         width: 1200,
         height: 630,
         alt: 'CoinMind Privacy Policy',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://coinmind-ai.com/privacy',
+    canonical: 'https://www.coinmind-ai.com/privacy',
   },
 }
 
@@ -50,7 +50,7 @@ export default function PrivacyPolicy() {
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Privacy Policy</h1>
               <p className="text-gray-600 mt-2">
-                Last updated: {new Date().toLocaleDateString()}
+                Last updated: September 2025
               </p>
             </div>
           </div>
@@ -172,7 +172,7 @@ export default function PrivacyPolicy() {
 
           {/* Footer */}
           <div className="text-center text-sm text-gray-500 py-8">
-            <p>Copyright © 2025 CoinMind-ai. All rights reserved.</p>
+            <p>Copyright © {new Date().getFullYear()} CoinMind AI. All rights reserved.</p>
           </div>
         </div>
       </Container>

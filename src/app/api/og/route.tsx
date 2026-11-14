@@ -1,14 +1,15 @@
-import { ImageResponse } from '@vercel/og'
-
-export const runtime = 'edge'
+import { ImageResponse } from 'next/og'
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
 
-    // Get dynamic values from query params or use defaults
-    const title = searchParams.get('title') || 'AI-Powered Expense Tracker'
-    const description = searchParams.get('description') || 'Track expenses with voice & chat in 170+ languages'
+    const title =
+      searchParams.get('title') ||
+      'Say what you spent. CoinMind handles the rest.'
+    const description =
+      searchParams.get('description') ||
+      'Voice, chat & receipt tracking across 170+ currencies on Web & Android.'
 
     return new ImageResponse(
       (
@@ -18,125 +19,144 @@ export async function GET(request: Request) {
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#0f172a',
-            backgroundImage: 'radial-gradient(circle at 25% 25%, #1e293b 0%, #0f172a 50%)',
+            justifyContent: 'space-between',
+            padding: '64px 72px',
+            backgroundColor: '#181719',
+            backgroundImage:
+              'radial-gradient(circle at 80% 20%, rgba(185, 154, 130, 0.24) 0%, rgba(24, 23, 25, 0) 55%)',
+            color: '#fbfbfb',
           }}
         >
+          {/* Top brand header */}
           <div
             style={{
               display: 'flex',
-              flexDirection: 'column',
               alignItems: 'center',
-              justifyContent: 'center',
-              textAlign: 'center',
-              padding: '0 50px',
+              justifyContent: 'space-between',
+              width: '100%',
             }}
           >
-            {/* Logo/Icon */}
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '30px',
+                gap: '16px',
               }}
             >
               <div
                 style={{
-                  width: '120px',
-                  height: '120px',
-                  borderRadius: '30px',
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  width: '56px',
+                  height: '56px',
+                  borderRadius: '16px',
+                  backgroundColor: '#b99a82',
+                  color: '#171717',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '60px',
-                  fontWeight: 'bold',
-                  color: 'white',
-                  boxShadow: '0 20px 40px rgba(102, 126, 234, 0.4)',
+                  fontSize: '30px',
+                  fontWeight: 800,
                 }}
               >
                 C
               </div>
+              <div
+                style={{
+                  fontSize: '32px',
+                  fontWeight: 700,
+                  letterSpacing: '-0.02em',
+                }}
+              >
+                CoinMind AI
+              </div>
             </div>
 
-            {/* Title */}
-            <h1
-              style={{
-                fontSize: '72px',
-                fontWeight: 'bold',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                backgroundClip: 'text',
-                color: 'transparent',
-                marginBottom: '20px',
-                lineHeight: '1.2',
-                maxWidth: '900px',
-              }}
-            >
-              {title}
-            </h1>
-
-            {/* Description */}
-            <p
-              style={{
-                fontSize: '32px',
-                color: '#94a3b8',
-                marginBottom: '40px',
-                lineHeight: '1.4',
-                maxWidth: '800px',
-              }}
-            >
-              {description}
-            </p>
-
-            {/* Features/Tags */}
             <div
               style={{
-                display: 'flex',
-                gap: '20px',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
+                padding: '10px 20px',
+                borderRadius: '999px',
+                border: '1px solid rgba(185, 154, 130, 0.45)',
+                backgroundColor: 'rgba(185, 154, 130, 0.14)',
+                color: '#b99a82',
+                fontSize: '20px',
+                fontWeight: 600,
               }}
             >
-              {['AI-Powered', 'Voice Input', 'Receipt OCR', 'Multi-Language', 'Auto-Categorize'].map((feature) => (
-                <div
-                  key={feature}
-                  style={{
-                    padding: '12px 24px',
-                    borderRadius: '100px',
-                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
-                    border: '2px solid rgba(102, 126, 234, 0.3)',
-                    color: '#a5b4fc',
-                    fontSize: '20px',
-                    fontWeight: '600',
-                  }}
-                >
-                  {feature}
-                </div>
-              ))}
+              Web & Android • Free Beta
             </div>
           </div>
 
-          {/* Bottom branding */}
+          {/* Center headline */}
           <div
             style={{
-              position: 'absolute',
-              bottom: '40px',
               display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
+              flexDirection: 'column',
+              gap: '20px',
+              maxWidth: '980px',
             }}
           >
             <div
               style={{
-                fontSize: '24px',
-                color: '#64748b',
-                fontWeight: '600',
+                fontSize: '64px',
+                fontWeight: 800,
+                lineHeight: 1.12,
+                letterSpacing: '-0.03em',
+                color: '#fbfbfb',
               }}
             >
-              coinmind-ai.com
+              {title}
+            </div>
+            <div
+              style={{
+                fontSize: '28px',
+                lineHeight: 1.4,
+                color: '#d5d0c8',
+                maxWidth: '860px',
+              }}
+            >
+              {description}
+            </div>
+          </div>
+
+          {/* Bottom feature pills & URL */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+            }}
+          >
+            <div style={{ display: 'flex', gap: '14px' }}>
+              {[
+                'Voice & Chat',
+                '170+ Currencies',
+                'Receipt OCR',
+                'Arabic & Multi-Language',
+              ].map((pill) => (
+                <div
+                  key={pill}
+                  style={{
+                    padding: '10px 20px',
+                    borderRadius: '999px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.14)',
+                    color: '#fbfbfb',
+                    fontSize: '18px',
+                    fontWeight: 600,
+                  }}
+                >
+                  {pill}
+                </div>
+              ))}
+            </div>
+            <div
+              style={{
+                fontSize: '22px',
+                fontWeight: 600,
+                color: '#b99a82',
+              }}
+            >
+              www.coinmind-ai.com
             </div>
           </div>
         </div>
@@ -146,10 +166,7 @@ export async function GET(request: Request) {
         height: 630,
       },
     )
-  } catch (e: any) {
-    console.log(`${e.message}`)
-    return new Response(`Failed to generate the image`, {
-      status: 500,
-    })
+  } catch {
+    return new Response('Failed to generate OG image', { status: 500 })
   }
 }

@@ -8,37 +8,15 @@ import {
   PopoverPanel,
 } from '@headlessui/react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Globe, Menu, ChevronUp } from 'lucide-react'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
 import { NavLinks } from '@/components/NavLinks'
-
-function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M5 6h14M5 18h14M5 12h14"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function ChevronUpIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M17 14l-5-5-5 5"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
+import { useLandingLanguage } from '@/components/LanguageProvider'
+import { APP_LOGIN_URL, APP_SIGNUP_URL } from '@/lib/i18n/landing-copy'
+import { trackLandingEvent } from '@/lib/analytics'
 
 function MobileNavLink(
   props: Omit<
@@ -49,40 +27,73 @@ function MobileNavLink(
   return (
     <PopoverButton
       as={Link}
-      className="block text-base/7 tracking-tight text-gray-700 hover:text-coinmind-primary transition-colors duration-200"
+      className="block rounded-lg py-1.5 text-base font-medium tracking-tight text-gray-800 transition-colors duration-200 hover:text-coinmind-primary"
       {...props}
     />
   )
 }
 
 export function Header() {
+  const { copy, toggleLocale } = useLandingLanguage()
+
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
-      <nav>
-        <Container className="relative z-50 flex justify-between py-6">
-          <div className="relative z-10 flex items-center gap-16">
-            <Link href="/" aria-label="Home" className="group">
-              <Logo className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
+    <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-[#fbfbfb]/85 backdrop-blur-md">
+      <nav aria-label="CoinMind AI">
+        <Container className="relative z-50 flex items-center justify-between py-4">
+          <div className="relative z-10 flex items-center gap-10 xl:gap-14">
+            <Link href="/" aria-label="CoinMind AI" className="group">
+              <Logo className="h-9 w-auto transition-transform duration-200 group-hover:scale-[1.02]" />
             </Link>
-            <div className="hidden lg:flex lg:gap-10">
+            <div className="hidden lg:flex lg:items-center lg:gap-8">
               <NavLinks />
             </div>
           </div>
-          <div className="flex items-center gap-6">
+
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <button
+              type="button"
+              onClick={toggleLocale}
+              aria-label={copy.nav.langSwitchAria}
+              className="relative z-10 inline-flex items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-800 transition-colors hover:border-coinmind-accent hover:bg-gray-50 sm:text-sm"
+            >
+              <Globe
+                className="h-3.5 w-3.5 text-coinmind-primary"
+                aria-hidden="true"
+              />
+              <span>{copy.nav.langSwitchLabel}</span>
+            </button>
+
+            <div className="hidden items-center gap-3 lg:flex">
+              <Button
+                href={APP_LOGIN_URL}
+                variant="outline"
+                color="primary"
+                onClick={() => trackLandingEvent('header_login_click')}
+              >
+                {copy.nav.login}
+              </Button>
+              <Button
+                href={APP_SIGNUP_URL}
+                variant="solid"
+                color="primary"
+                onClick={() => trackLandingEvent('header_signup_click')}
+              >
+                {copy.nav.tryFree}
+              </Button>
+            </div>
+
             <Popover className="lg:hidden">
               {({ open }) => (
                 <>
                   <PopoverButton
-                    className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-coinmind-primary focus:not-data-focus:outline-hidden active:stroke-gray-900 transition-colors duration-200"
-                    aria-label="Toggle site navigation"
+                    className="relative z-10 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white p-2 text-gray-900 transition-colors hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-coinmind-primary focus:outline-none"
+                    aria-label={copy.nav.mobileMenuAria}
                   >
-                    {({ open }) =>
-                      open ? (
-                        <ChevronUpIcon className="h-6 w-6" />
-                      ) : (
-                        <MenuIcon className="h-6 w-6" />
-                      )
-                    }
+                    {open ? (
+                      <ChevronUp className="h-5 w-5" aria-hidden="true" />
+                    ) : (
+                      <Menu className="h-5 w-5" aria-hidden="true" />
+                    )}
                   </PopoverButton>
                   <AnimatePresence initial={false}>
                     {open && (
@@ -93,49 +104,53 @@ export function Header() {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
-                          className="fixed inset-0 z-0 bg-gray-300/60 backdrop-blur-sm"
+                          className="fixed inset-0 z-0 bg-gray-900/25 backdrop-blur-xs"
                         />
                         <PopoverPanel
                           static
                           as={motion.div}
-                          initial={{ opacity: 0, y: -32 }}
+                          initial={{ opacity: 0, y: -24 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{
                             opacity: 0,
-                            y: -32,
-                            transition: { duration: 0.2 },
+                            y: -24,
+                            transition: { duration: 0.18 },
                           }}
-                          className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-white/95 backdrop-blur-md px-6 pt-32 pb-6 shadow-2xl shadow-gray-900/20 border border-gray-200/50"
+                          className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-3xl border-b border-gray-200 bg-[#fbfbfb] px-6 pt-24 pb-7 shadow-xl"
                         >
-                          <div className="space-y-4">
+                          <div className="space-y-3">
+                            <MobileNavLink href="/#demo">
+                              {copy.nav.howItWorks}
+                            </MobileNavLink>
                             <MobileNavLink href="/#features">
-                              Features
+                              {copy.nav.features}
+                            </MobileNavLink>
+                            <MobileNavLink href="/#security">
+                              {copy.nav.security}
                             </MobileNavLink>
                             <MobileNavLink href="/#pricing">
-                              Pricing
+                              {copy.nav.pricing}
                             </MobileNavLink>
-                            <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
-                            <MobileNavLink href="/privacy">
-                              Privacy
-                            </MobileNavLink>
-                            <MobileNavLink href="/terms">
-                              Terms
+                            <MobileNavLink href="/#faqs">
+                              {copy.nav.faqs}
                             </MobileNavLink>
                           </div>
-                          <div className="mt-8 flex flex-col gap-4">
-                            <Button 
-                              href="https://app.coinmind-ai.com/auth/login" 
+                          <div className="mt-6 flex flex-col gap-3 border-t border-gray-200 pt-5">
+                            <Button
+                              href={APP_LOGIN_URL}
                               variant="outline"
                               color="primary"
+                              onClick={() => trackLandingEvent('header_login_click')}
                             >
-                              Log in
+                              {copy.nav.login}
                             </Button>
-                            <Button 
-                              href="https://app.coinmind-ai.com/auth/signup"
+                            <Button
+                              href={APP_SIGNUP_URL}
                               variant="solid"
                               color="primary"
+                              onClick={() => trackLandingEvent('header_signup_click')}
                             >
-                              Try Web App Free
+                              {copy.nav.tryFree}
                             </Button>
                           </div>
                         </PopoverPanel>
@@ -145,22 +160,6 @@ export function Header() {
                 </>
               )}
             </Popover>
-            <div className="flex items-center gap-4 max-lg:hidden">
-              <Button 
-                href="https://app.coinmind-ai.com/auth/login" 
-                variant="outline"
-                color="primary"
-              >
-                Log in
-              </Button>
-              <Button 
-                href="https://app.coinmind-ai.com/auth/signup"
-                variant="solid"
-                color="primary"
-              >
-                Try Web App Free
-              </Button>
-            </div>
           </div>
         </Container>
       </nav>

@@ -1,11 +1,18 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { TextField } from '@/components/Fields'
 import { Logomark } from '@/components/Logo'
 import { NavLinks } from '@/components/NavLinks'
+import { useLandingLanguage } from '@/components/LanguageProvider'
+import {
+  APP_LOGIN_URL,
+  GOOGLE_PLAY_URL,
+  SUPPORT_EMAIL,
+} from '@/lib/i18n/landing-copy'
+import { trackLandingEvent } from '@/lib/analytics'
 import qrCode from '@/images/qr-code.svg'
 
 function QrCodeBorder(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -21,120 +28,95 @@ function QrCodeBorder(props: React.ComponentPropsWithoutRef<'svg'>) {
 }
 
 export function Footer() {
+  const { copy } = useLandingLanguage()
+
   return (
-    <footer className="bg-gradient-to-br from-gray-50 via-white to-gray-50 border-t border-gray-200">
+    <footer className="border-t border-gray-200 bg-[#fbfbfb]">
       <Container>
-        <div className="flex flex-col items-start justify-between gap-y-12 pt-16 pb-6 lg:flex-row lg:items-center lg:py-16">
+        <div className="flex flex-col items-start justify-between gap-y-10 py-14 lg:flex-row lg:items-center">
           <div className="max-w-md">
-            <div className="flex items-center text-gray-900">
-              <Logomark className="h-12 w-12 flex-none fill-coinmind-primary" />
-              <div className="ml-4">
-                <p className="text-xl font-bold text-coinmind-primary">CoinMind</p>
-                <p className="mt-1 text-sm text-gray-600">Your AI-Powered Personal Finance Assistant.</p>
+            <div className="flex items-center gap-3 text-gray-900">
+              <Logomark className="h-10 w-10 flex-none" />
+              <div>
+                <p dir="ltr" className="text-lg font-bold text-coinmind-primary">
+                  CoinMind AI
+                </p>
+                <p className="text-xs font-medium text-gray-600">
+                  {copy.footer.tagline}
+                </p>
               </div>
             </div>
-            <p className="mt-4 text-sm text-gray-600 leading-relaxed">
-              Track expenses with voice commands, analyze spending patterns, and get intelligent insights about your finances in any language.
+            <p className="mt-4 text-sm leading-relaxed text-gray-600">
+              {copy.footer.description}
             </p>
-            <nav className="mt-8 flex gap-8">
+            <nav
+              aria-label={copy.footer.tagline}
+              className="mt-6 flex flex-wrap gap-x-7 gap-y-2"
+            >
               <NavLinks />
             </nav>
           </div>
-          
-          <div className="group relative -mx-4 flex items-center self-stretch p-6 transition-all duration-300 hover:bg-white hover:shadow-lg sm:self-auto sm:rounded-2xl lg:mx-0 lg:self-auto lg:p-8 border border-gray-200/50">
-            <div className="relative flex h-24 w-24 flex-none items-center justify-center">
+
+          <a
+            href={GOOGLE_PLAY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackLandingEvent('google_play_click')}
+            className="group relative flex items-center gap-6 self-stretch rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:border-coinmind-accent hover:shadow-md sm:self-auto lg:p-7"
+          >
+            <div className="relative flex h-20 w-20 flex-none items-center justify-center">
               <QrCodeBorder className="absolute inset-0 h-full w-full stroke-coinmind-accent transition-colors group-hover:stroke-coinmind-primary" />
-              <Image src={qrCode} alt="" unoptimized />
+              <Image src={qrCode} alt={copy.footer.qrAlt} unoptimized />
             </div>
-            <div className="ml-8 lg:w-64">
-              <p className="text-lg font-semibold text-coinmind-primary">
-                <Link href="#">
-                  <span className="absolute inset-0 sm:rounded-2xl" />
-                  Download the app
-                </Link>
+            <div className="max-w-xs">
+              <p className="text-base font-bold text-coinmind-primary">
+                {copy.footer.qrTitle}
               </p>
-              <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                Scan the QR code to download the CoinMind app from the App Store or Google Play.
+              <p className="mt-1 text-xs leading-relaxed text-gray-600 sm:text-sm">
+                {copy.footer.qrDescription}
               </p>
-              <div className="mt-4 flex items-center text-xs text-gray-500">
-                <span className="text-coinmind-income mr-1">★</span>
-                <span>4.8/5 Rating • 10K+ Downloads</span>
-              </div>
+              <p className="mt-2.5 text-xs font-semibold text-coinmind-primary group-hover:underline">
+                {copy.footer.qrCta}
+              </p>
             </div>
-          </div>
+          </a>
         </div>
-        
-        <div className="flex flex-col items-center border-t border-gray-200 pt-8 pb-12 md:flex-row-reverse md:justify-between md:pt-6">
-          <form className="flex w-full justify-center md:w-auto">
-            <div className="flex items-center gap-2">
-              <TextField
-                type="email"
-                aria-label="Email address"
-                placeholder="Enter your email"
-                autoComplete="email"
-                required
-                className="w-72 min-w-0 shrink border-gray-300 focus:border-coinmind-primary focus:ring-coinmind-primary bg-white text-gray-900 placeholder-gray-500"
-              />
-              <Button 
-                type="submit" 
-                variant="solid"
-                color="primary"
-                className="text-sm px-4 py-2 whitespace-nowrap"
-              >
-                <span className="hidden lg:inline">Join newsletter</span>
-                <span className="lg:hidden">Subscribe</span>
-              </Button>
-            </div>
-          </form>
-          
-          <div className="mt-6 flex flex-col items-center gap-4 md:mt-0 md:flex-row md:gap-8">
-            <p className="text-sm text-gray-500">
-              &copy; Copyright {new Date().getFullYear()} CoinMind. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-sm">
-              <Link href="/privacy" className="text-gray-500 hover:text-coinmind-primary transition-colors duration-200">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-gray-500 hover:text-coinmind-primary transition-colors duration-200">
-                Terms of Service
-              </Link>
-              <Link href="/data-deletion-request" className="text-gray-500 hover:text-coinmind-primary transition-colors duration-200">
-                Data Deletion
-              </Link>
-            </div>
-          </div>
-        </div>
-        
-        {/* Additional footer info */}
-        <div className="border-t border-gray-200 pt-6 pb-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-500">
-            <div>
-              <h4 className="font-semibold text-coinmind-primary mb-2">Features</h4>
-              <ul className="space-y-1">
-                <li>Voice Commands</li>
-                <li>Multi-Language Support</li>
-                <li>Smart Analytics</li>
-                <li>Receipt OCR</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-coinmind-primary mb-2">Support</h4>
-              <ul className="space-y-1">
-                <li>Help Center</li>
-                <li>Contact Us</li>
-                <li>Community</li>
-                <li>Status</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-coinmind-primary mb-2">Company</h4>
-              <ul className="space-y-1">
-                <li>About Us</li>
-                <li>Blog</li>
-                <li>Careers</li>
-                <li>Press</li>
-              </ul>
-            </div>
+
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-gray-200 py-8 text-xs text-gray-500 sm:text-sm md:flex-row">
+          <p suppressHydrationWarning>
+            &copy; {new Date().getFullYear()} {copy.footer.copyright}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <Link
+              href="/privacy"
+              className="transition-colors hover:text-coinmind-primary"
+            >
+              {copy.footer.privacy}
+            </Link>
+            <Link
+              href="/terms"
+              className="transition-colors hover:text-coinmind-primary"
+            >
+              {copy.footer.terms}
+            </Link>
+            <Link
+              href="/data-deletion-request"
+              className="transition-colors hover:text-coinmind-primary"
+            >
+              {copy.footer.dataDeletion}
+            </Link>
+            <a
+              href={`mailto:${SUPPORT_EMAIL}`}
+              className="transition-colors hover:text-coinmind-primary"
+            >
+              {copy.footer.contactSupport}
+            </a>
+            <Link
+              href={APP_LOGIN_URL}
+              className="font-medium text-coinmind-primary hover:underline"
+            >
+              {copy.footer.webAppLogin}
+            </Link>
           </div>
         </div>
       </Container>

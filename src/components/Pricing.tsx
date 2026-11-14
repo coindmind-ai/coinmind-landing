@@ -1,336 +1,236 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Radio, RadioGroup } from '@headlessui/react'
 import clsx from 'clsx'
+import { Check } from 'lucide-react'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Logomark } from '@/components/Logo'
-
-const plans = [
-  {
-    name: 'Free Tier',
-    featured: false,
-    price: { Monthly: '$0', Annually: '$0' },
-    description:
-      'Perfect for getting started with personal finance tracking. Forever free.',
-    button: {
-      label: 'Get started for free',
-      href: 'https://www.coinmind-ai.com/auth/signup',
-    },
-    features: [
-      '10 transactions per month (typing, voice)',
-      'Basic receipt OCR (3 receipts/month)',
-      'Single currency support (USD only)',
-      'Basic dashboard (income/expenses only)',
-      'CSV import (up to 5 transactions)',
-      'Community support',
-    ],
-    logomarkClassName: 'fill-gray-300',
-    badge: null,
-  },
-  {
-    name: 'Pro Tier',
-    featured: true,
-    price: { Monthly: '$9.99', Annually: '$99' },
-    description:
-      'For serious users who want unlimited access and advanced features.',
-    button: {
-      label: 'Coming Soon',
-      href: 'https://www.coinmind-ai.com/auth/signup',
-    },
-    features: [
-      'Extended transactions',
-      'Advanced receipt OCR',
-      'Multi-currency support (170+ currencies)',
-      'Advanced analytics (trends, predictions, insights)',
-      'Chat, voice, and charts',
-      'CSV/Excel import (unlimited)',
-      'Export capabilities (PDF reports, tax exports)',
-      'Priority support',
-    ],
-    logomarkClassName: 'fill-white',
-    badge: 'Most Popular',
-  },
-]
-
-function CheckIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path
-        d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-        fill="currentColor"
-      />
-      <circle
-        cx="12"
-        cy="12"
-        r="8.25"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function Plan({
-  name,
-  price,
-  description,
-  button,
-  features,
-  activePeriod,
-  logomarkClassName,
-  featured = false,
-  badge,
-}: {
-  name: string
-  price: {
-    Monthly: string
-    Annually: string
-  }
-  description: string
-  button: {
-    label: string
-    href: string
-  }
-  features: Array<string>
-  activePeriod: 'Monthly' | 'Annually'
-  logomarkClassName?: string
-  featured?: boolean
-  badge?: string | null
-}) {
-  return (
-    <section
-      className={clsx(
-        'relative flex flex-col overflow-hidden rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl',
-        featured 
-          ? 'order-first bg-gradient-to-br from-coinmind-primary to-coinmind-primary/90 lg:order-0 scale-105 border-2 border-coinmind-accent/20' 
-          : 'bg-white border border-gray-200 hover:border-coinmind-accent/30 hover:scale-105'
-      )}
-    >
-      {/* Badge */}
-      {badge && (
-        <div className="mb-4">
-          <span className="inline-flex items-center justify-center w-full rounded-full bg-coinmind-income px-4 py-1 text-xs font-semibold text-white shadow-lg">
-            {badge}
-          </span>
-        </div>
-      )}
-      
-      {/* Coming Soon Badge for Pro Tier */}
-      {featured && (
-        <div className="absolute -top-1 -right-1">
-          <span className="inline-flex items-center px-1 py-0.5 rounded-full text-xs font-bold bg-red-500 text-white shadow-md border border-red-400 transform rotate-12">
-            INSTEAD
-          </span>
-        </div>
-      )}
-      
-      <h3
-        className={clsx(
-          'flex items-center text-lg font-bold',
-          featured ? 'text-white' : 'text-gray-900',
-        )}
-      >
-        <Logomark className={clsx('h-8 w-8 flex-none', logomarkClassName)} />
-        <span className="ml-4">{name}</span>
-      </h3>
-      
-      <p
-        className={clsx(
-          'relative mt-6 flex text-4xl font-bold tracking-tight',
-          featured ? 'text-white' : 'text-gray-900',
-        )}
-      >
-        {price.Monthly === price.Annually ? (
-          price.Monthly
-        ) : (
-          <>
-            <span
-              aria-hidden={activePeriod === 'Annually'}
-              className={clsx(
-                'transition duration-300',
-                activePeriod === 'Annually' &&
-                  'pointer-events-none translate-x-6 opacity-0 select-none',
-              )}
-            >
-              {price.Monthly}
-            </span>
-            <span
-              aria-hidden={activePeriod === 'Monthly'}
-              className={clsx(
-                'absolute top-0 left-0 transition duration-300',
-                activePeriod === 'Monthly' &&
-                  'pointer-events-none -translate-x-6 opacity-0 select-none',
-              )}
-            >
-              {price.Annually}
-            </span>
-          </>
-        )}
-        {price.Monthly !== '$0' && (
-          <span className={clsx(
-            'text-lg font-normal ml-2',
-            featured ? 'text-gray-300' : 'text-gray-600'
-          )}>
-            /{activePeriod === 'Monthly' ? 'mo' : 'year'}
-          </span>
-        )}
-      </p>
-      
-      <p
-        className={clsx(
-          'mt-4 text-base leading-relaxed',
-          featured ? 'text-gray-200' : 'text-gray-600',
-        )}
-      >
-        {description}
-      </p>
-      
-      <div className="order-last mt-8 flex-1">
-        <ul
-          role="list"
-          className={clsx(
-            '-my-3 divide-y text-sm',
-            featured
-              ? 'divide-gray-700 text-gray-200'
-              : 'divide-gray-200 text-gray-700',
-          )}
-        >
-          {features.map((feature) => (
-            <li key={feature} className="flex py-3">
-              <CheckIcon
-                className={clsx(
-                  'h-6 w-6 flex-none mt-0.5',
-                  featured ? 'text-coinmind-income' : 'text-coinmind-income',
-                )}
-              />
-              <span className="ml-4 leading-relaxed">{feature}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      
-      <Button
-        href={button.href}
-        color={featured ? 'white' : 'primary'}
-        className={clsx(
-          'mt-8 w-full text-base font-semibold py-3 transition-all duration-300 transform hover:scale-105',
-          featured 
-            ? 'shadow-lg hover:shadow-xl' 
-            : 'shadow-lg hover:shadow-xl'
-        )}
-        aria-label={`Get started with the ${name} plan for ${price}`}
-      >
-        {button.label}
-      </Button>
-    </section>
-  )
-}
+import { useLandingLanguage } from '@/components/LanguageProvider'
+import { APP_SIGNUP_URL, SUPPORT_EMAIL } from '@/lib/i18n/landing-copy'
+import { trackLandingEvent } from '@/lib/analytics'
 
 export function Pricing() {
-  let [activePeriod, setActivePeriod] = useState<'Monthly' | 'Annually'>(
+  const { copy } = useLandingLanguage()
+  const [activePeriod, setActivePeriod] = useState<'Monthly' | 'Annually'>(
     'Monthly',
   )
+
+  const freePlan = copy.pricing.plans.free
+  const proPlan = copy.pricing.plans.pro
+
+  const proDisplayPrice =
+    activePeriod === 'Monthly' ? proPlan.priceMonthly : proPlan.priceAnnually
+  const proPeriodSuffix =
+    activePeriod === 'Monthly' ? copy.pricing.perMonth : copy.pricing.perYear
 
   return (
     <section
       id="pricing"
       aria-labelledby="pricing-title"
-      className="py-20 sm:py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50"
+      className="bg-[#fbfbfb] py-20 sm:py-28"
     >
       <Container>
         <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center rounded-full border border-coinmind-accent/40 bg-coinmind-accent/12 px-3.5 py-1 text-xs font-semibold text-coinmind-primary sm:text-sm">
+            {copy.pricing.badge}
+          </span>
           <h2
             id="pricing-title"
-            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
           >
-            Simple, transparent pricing
+            {copy.pricing.title}
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            {`Choose the plan that fits your needs. Start free and upgrade when you're ready.`}
+          <p className="mt-4 text-base text-gray-600 sm:text-lg">
+            {copy.pricing.subtitle}
           </p>
         </div>
-        
-        <div className="mx-auto mt-16 flex max-w-2xl justify-center">
+
+        {/* Billing period toggle */}
+        <div className="mx-auto mt-10 flex max-w-md justify-center">
           <RadioGroup
             value={activePeriod}
             onChange={setActivePeriod}
-            className="grid grid-cols-2 gap-x-1 rounded-full bg-white p-1 shadow-lg ring-1 ring-gray-200"
+            aria-label={copy.pricing.billingAria}
+            className="grid grid-cols-2 gap-1 rounded-full border border-gray-200 bg-white p-1 shadow-xs"
           >
             <Radio
               value="Monthly"
               className={({ checked }) =>
                 clsx(
                   checked
-                    ? 'bg-coinmind-primary shadow-sm'
-                    : '',
-                  'cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-coinmind-primary focus:ring-offset-2',
+                    ? 'bg-coinmind-primary text-white shadow-2xs'
+                    : 'text-gray-700 hover:text-gray-900',
+                  'cursor-pointer rounded-full px-5 py-2 text-center text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-coinmind-primary focus:outline-none sm:text-sm',
                 )
               }
             >
-              <span className={clsx(
-                activePeriod === 'Monthly' ? 'text-white' : 'text-gray-900'
-              )}>
-                Monthly
-              </span>
+              {copy.pricing.monthly}
             </Radio>
             <Radio
               value="Annually"
               className={({ checked }) =>
                 clsx(
                   checked
-                    ? 'bg-coinmind-primary shadow-sm'
-                    : '',
-                  'cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-coinmind-primary focus:ring-offset-2',
+                    ? 'bg-coinmind-primary text-white shadow-2xs'
+                    : 'text-gray-700 hover:text-gray-900',
+                  'cursor-pointer rounded-full px-5 py-2 text-center text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-coinmind-primary focus:outline-none sm:text-sm',
                 )
               }
             >
-              <span className={clsx(
-                activePeriod === 'Annually' ? 'text-white' : 'text-gray-900'
-              )}>
-                Annually
-              </span>
-              <span className={clsx(
-                'ml-1 text-xs',
-                activePeriod === 'Annually' ? 'text-green-400' : 'text-coinmind-income'
-              )}>
-                Get 2 months free
+              <span>{copy.pricing.annually}</span>
+              <span
+                className={clsx(
+                  'ms-1.5 text-[11px] font-semibold',
+                  activePeriod === 'Annually'
+                    ? 'text-coinmind-accent'
+                    : 'text-coinmind-income',
+                )}
+              >
+                ({copy.pricing.twoMonthsFree})
               </span>
             </Radio>
           </RadioGroup>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2">
-          {plans.map((plan) => (
-            <div key={plan.name} className="relative pt-8">
-              <Plan {...plan} activePeriod={activePeriod} />
+        {/* Plan cards */}
+        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2">
+          {/* Free Tier Card */}
+          <section className="relative flex flex-col justify-between rounded-3xl border-2 border-coinmind-primary bg-white p-8 shadow-lg">
+            <div>
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <Logomark className="h-8 w-8 flex-none" />
+                  <h3 className="text-lg font-bold text-gray-900">
+                    {freePlan.name}
+                  </h3>
+                </div>
+                <span className="rounded-full bg-coinmind-income/12 px-3 py-1 text-xs font-semibold text-coinmind-income">
+                  {freePlan.badge}
+                </span>
+              </div>
+
+              <p className="mt-6 flex items-baseline gap-1.5 text-4xl font-bold tracking-tight text-gray-900">
+                <span>{freePlan.priceMonthly}</span>
+              </p>
+
+              <p className="mt-3 text-sm leading-relaxed text-gray-600 sm:text-base">
+                {freePlan.description}
+              </p>
+
+              <ul
+                role="list"
+                className="mt-7 divide-y divide-gray-100 border-t border-gray-100 text-sm text-gray-700"
+              >
+                {freePlan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3 py-3">
+                    <span className="mt-0.5 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-coinmind-income/12 text-coinmind-income">
+                      <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                    </span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-          ))}
+
+            <Button
+              href={APP_SIGNUP_URL}
+              variant="solid"
+              color="primary"
+              aria-label={`${freePlan.cta} — ${freePlan.name}`}
+              onClick={() =>
+                trackLandingEvent('pricing_cta_click', {
+                  plan: 'free',
+                  period: activePeriod,
+                })
+              }
+              className="mt-8 w-full py-3.5 text-base"
+            >
+              {freePlan.cta}
+            </Button>
+          </section>
+
+          {/* Pro Tier Card */}
+          <section className="relative flex flex-col justify-between rounded-3xl border border-gray-800 bg-[#181719] p-8 text-white shadow-lg">
+            <div>
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <Image
+                    src="/coinmind-white.svg"
+                    alt="CoinMind AI"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 flex-none"
+                  />
+                  <h3 className="text-lg font-bold text-white">
+                    {proPlan.name}
+                  </h3>
+                </div>
+                <span className="rounded-full border border-coinmind-accent/40 bg-coinmind-accent/15 px-3 py-1 text-xs font-semibold text-coinmind-accent">
+                  {proPlan.badge}
+                </span>
+              </div>
+
+              <p className="mt-6 flex items-baseline gap-1.5 text-4xl font-bold tracking-tight text-white">
+                <span>{proDisplayPrice}</span>
+                <span className="text-base font-normal text-gray-400">
+                  {proPeriodSuffix}
+                </span>
+              </p>
+
+              <p className="mt-3 text-sm leading-relaxed text-gray-300 sm:text-base">
+                {proPlan.description}
+              </p>
+
+              <ul
+                role="list"
+                className="mt-7 divide-y divide-white/10 border-t border-white/10 text-sm text-gray-200"
+              >
+                {proPlan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3 py-3">
+                    <span className="mt-0.5 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-coinmind-accent/20 text-coinmind-accent">
+                      <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                    </span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <Button
+              href={`mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(copy.pricing.waitlistSubject)}`}
+              variant="outline"
+              color="white"
+              aria-label={`${proPlan.cta} — ${proPlan.name}`}
+              onClick={() =>
+                trackLandingEvent('pricing_cta_click', {
+                  plan: 'pro_waitlist',
+                  period: activePeriod,
+                })
+              }
+              className="mt-8 w-full py-3.5 text-base"
+            >
+              {proPlan.cta}
+            </Button>
+          </section>
         </div>
-        
-        {/* Additional info */}
-        <div className="mx-auto mt-16 max-w-2xl text-center">
-          <p className="text-sm text-gray-500">
-            All plans include a 14-day free trial. No credit card required to start.
-          </p>
-          <div className="mt-6 flex justify-center space-x-8 text-sm text-gray-500">
-            <span className="flex items-center">
-              <span className="text-coinmind-income mr-2">✓</span>
-              Cancel anytime
-            </span>
-            <span className="flex items-center">
-              <span className="text-coinmind-income mr-2">✓</span>
-              No setup fees
-            </span>
-            <span className="flex items-center">
-              <span className="text-coinmind-income mr-2">✓</span>
-              Secure & private
-            </span>
+
+        {/* Honest beta note & reassurances */}
+        <div className="mx-auto mt-10 max-w-2xl text-center">
+          <p className="text-sm text-gray-600">{copy.pricing.honestNote}</p>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-gray-600 sm:text-sm">
+            {copy.pricing.reassurances.map((item) => (
+              <span key={item} className="inline-flex items-center gap-1.5">
+                <Check
+                  className="h-4 w-4 text-coinmind-income"
+                  aria-hidden="true"
+                />
+                <span>{item}</span>
+              </span>
+            ))}
           </div>
         </div>
       </Container>

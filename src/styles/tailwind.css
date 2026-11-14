@@ -9,68 +9,55 @@
   --text-sm: 0.875rem;
   --text-sm--line-height: 1.5rem;
   --text-base: 1rem;
-  --text-base--line-height: 1.5rem;
+  --text-base--line-height: 1.6rem;
   --text-lg: 1.125rem;
-  --text-lg--line-height: 2rem;
+  --text-lg--line-height: 1.85rem;
   --text-xl: 1.25rem;
-  --text-xl--line-height: 1.75rem;
+  --text-xl--line-height: 1.85rem;
   --text-2xl: 1.5rem;
   --text-2xl--line-height: 2rem;
   --text-3xl: 2rem;
-  --text-3xl--line-height: 3rem;
+  --text-3xl--line-height: 2.5rem;
   --text-4xl: 2.5rem;
-  --text-4xl--line-height: 3rem;
-  --text-5xl: 3rem;
-  --text-5xl--line-height: 1;
+  --text-4xl--line-height: 2.9rem;
+  --text-5xl: 3.1rem;
+  --text-5xl--line-height: 1.12;
   --text-6xl: 3.75rem;
-  --text-6xl--line-height: 1;
+  --text-6xl--line-height: 1.08;
   --text-7xl: 4.5rem;
-  --text-7xl--line-height: 1;
-  --text-8xl: 6rem;
-  --text-8xl--line-height: 1;
-  --text-9xl: 8rem;
-  --text-9xl--line-height: 1;
+  --text-7xl--line-height: 1.05;
 
-  --animate-fade-in: fade-in 0.5s linear forwards;
-  --animate-spin-slow: spin 4s linear infinite;
-  --animate-spin-slower: spin 6s linear infinite;
-  --animate-spin-reverse: spin-reverse 1s linear infinite;
-  --animate-spin-reverse-slow: spin-reverse 4s linear infinite;
-  --animate-spin-reverse-slower: spin-reverse 6s linear infinite;
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+  --animate-spin-slow: spin 18s linear infinite;
+  --animate-spin-slower: spin 28s linear infinite;
+  --animate-spin-reverse-slower: spin-reverse 24s linear infinite;
 
   --radius-4xl: 2rem;
   --radius-5xl: 2.5rem;
 
-  /* Enhanced CoinMind Brand Colors */
-  --color-gray-50: oklch(0.985 0 0);
-  --color-gray-100: oklch(0.97 0 0);
-  --color-gray-200: oklch(0.922 0 0);
-  --color-gray-300: oklch(0.87 0 0);
-  --color-gray-400: oklch(0.708 0 0);
-  --color-gray-500: oklch(0.556 0 0);
-  --color-gray-600: oklch(0.439 0 0);
-  --color-gray-700: oklch(0.371 0 0);
-  --color-gray-800: oklch(0.269 0 0);
-  --color-gray-900: oklch(0.205 0 0);
-  --color-gray-950: oklch(0.145 0 0);
+  /* Neutral Surfaces */
+  --color-gray-50: #fbfbfb;
+  --color-gray-100: #f4f3f1;
+  --color-gray-200: #e7e4df;
+  --color-gray-300: #d5d0c8;
+  --color-gray-400: #9f988e;
+  --color-gray-500: #6f6961;
+  --color-gray-600: #524d47;
+  --color-gray-700: #3a3632;
+  --color-gray-800: #262422;
+  --color-gray-900: #171717;
+  --color-gray-950: #111012;
 
-  /* CoinMind Brand Colors - Matching Mobile App */
-  --color-coinmind-primary: oklch(0.205 0 0); /* #18181b - Dark gray/black */
-  --color-coinmind-accent: oklch(0.708 0.05 60); /* #A3B1C6 - Light blue-gray */
-  --color-coinmind-income: oklch(0.556 0.15 140); /* #22c55e - Green for income */
-  --color-coinmind-expense: oklch(0.556 0.15 30); /* #D96B2B - Orange for expenses */
-  
-  /* Additional Brand Colors */
-  --color-coinmind-success: oklch(0.556 0.15 140); /* Green */
-  --color-coinmind-warning: oklch(0.556 0.15 30); /* Orange */
-  --color-coinmind-error: oklch(0.556 0.15 25); /* Red */
-  --color-coinmind-info: oklch(0.708 0.05 60); /* Blue-gray */
-  
-  /* Gradient Colors */
-  --color-coinmind-gradient-start: oklch(0.205 0 0); /* Dark start */
-  --color-coinmind-gradient-end: oklch(0.708 0.05 60); /* Light end */
+  /* Official CoinMind Brand Palette (Brand Identity.md) */
+  --color-coinmind-primary: oklch(0.205 0 0); /* #171717 - Obsidian dark */
+  --color-coinmind-accent: oklch(0.708 0.05 60); /* #b99a82 - Warm sandstone tan */
+  --color-coinmind-income: oklch(0.556 0.15 140); /* #3b8729 - Income green */
+  --color-coinmind-expense: oklch(0.556 0.15 30); /* #bb493a - Expense red-orange */
+  --color-coinmind-error: oklch(0.556 0.15 25); /* #bb4844 - Error red */
+  --color-coinmind-surface-light: #fbfbfb;
+  --color-coinmind-surface-dark: #181719;
 
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-inter), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
 
   --container-2xl: 40rem;
 
@@ -82,40 +69,57 @@
       opacity: 1;
     }
   }
+
   @keyframes spin-reverse {
     to {
       transform: rotate(-360deg);
     }
   }
-  
-  /* Enhanced animations */
+
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0px);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
     }
   }
-  
+
   @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(163, 177, 198, 0.3);
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(185, 154, 130, 0.2);
     }
     50% {
-      box-shadow: 0 0 30px rgba(163, 177, 198, 0.6);
+      box-shadow: 0 0 32px rgba(185, 154, 130, 0.45);
     }
   }
 }
 
 @theme inline {
-  --animate-marquee: marquee var(--marquee-duration) linear infinite;
-  --animate-float: float 3s ease-in-out infinite;
-  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+}
 
-  @keyframes marquee {
-    100% {
-      transform: translateY(-50%);
-    }
+html {
+  scroll-behavior: smooth;
+}
+
+html[dir='rtl'] body {
+  font-family: var(--font-arabic), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

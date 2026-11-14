@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Data Deletion Request - CoinMind AI',
     description: 'Request deletion of your CoinMind AI account and data. Complete control over your personal information.',
-    url: 'https://coinmind-ai.com/data-deletion-request',
+    url: 'https://www.coinmind-ai.com/data-deletion-request',
     images: [
       {
         url: '/api/og?title=Data%20Deletion%20Request&description=Request%20deletion%20of%20your%20account%20and%20data',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://coinmind-ai.com/data-deletion-request',
+    canonical: 'https://www.coinmind-ai.com/data-deletion-request',
   },
 }
 
@@ -50,7 +50,7 @@ export default function DataDeletionRequest() {
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Data Deletion Request</h1>
               <p className="text-gray-600 mt-2">
-                Last updated: {new Date().toLocaleDateString()}
+                Last updated: September 2025
               </p>
             </div>
           </div>
@@ -291,7 +291,7 @@ export default function DataDeletionRequest() {
 
           {/* Footer */}
           <div className="text-center text-sm text-gray-500 py-8">
-            <p>Copyright © 2025 CoinMind-ai. All rights reserved.</p>
+            <p>Copyright © {new Date().getFullYear()} CoinMind AI. All rights reserved.</p>
             <div className="mt-4 space-x-4">
               <Link href="/privacy" className="text-blue-600 hover:text-blue-800">
                 Privacy Policy

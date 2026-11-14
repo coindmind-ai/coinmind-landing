@@ -8,7 +8,7 @@ export function Logomark({ className = '' }: LogomarkProps) {
   return (
     <Image
       src="/coinmind-black.svg"
-      alt="CoinMind"
+      alt="CoinMind AI"
       width={32}
       height={32}
       className={className}
@@ -20,19 +20,27 @@ interface LogoProps extends React.ComponentPropsWithoutRef<'div'> {
   showText?: boolean
 }
 
-export function Logo({ showText = true, className = '', ...props }: LogoProps) {
+export function Logo({
+  showText = true,
+  className = '',
+  ...props
+}: LogoProps) {
   return (
-    <div className={`flex items-center gap-3 ${className}`} {...props}>
+    <div
+      dir="ltr"
+      className={`inline-flex items-center gap-2.5 ${className}`}
+      {...props}
+    >
       <Image
         src="/coinmind-black.svg"
-        alt="CoinMind"
-        width={40}
-        height={40}
-        className="w-10 h-10"
+        alt="CoinMind AI"
+        width={38}
+        height={38}
+        className="h-9 w-9"
       />
       {showText && (
-        <span className="text-xl font-bold text-gray-900">
-          CoinMind
+        <span className="text-lg font-bold tracking-tight text-gray-900">
+          CoinMind AI
         </span>
       )}
     </div>

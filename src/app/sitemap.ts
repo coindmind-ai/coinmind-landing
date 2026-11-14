@@ -1,11 +1,9 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://coinmind-ai.com'
-  
-  // Get current date for lastModified
+  const baseUrl = 'https://www.coinmind-ai.com'
   const currentDate = new Date()
-  
+
   return [
     {
       url: baseUrl,
@@ -24,6 +22,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/data-deletion-request`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.4,
     },
   ]
 }

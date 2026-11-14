@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Terms of Service - CoinMind AI Expense Tracker',
     description: 'Terms for using CoinMind AI expense tracker with voice, chat, and receipt OCR features.',
-    url: 'https://coinmind-ai.com/terms',
+    url: 'https://www.coinmind-ai.com/terms',
     images: [
       {
         url: '/api/og?title=Terms%20of%20Service&description=AI%20Expense%20Tracker%20App%20Agreement',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://coinmind-ai.com/terms',
+    canonical: 'https://www.coinmind-ai.com/terms',
   },
 }
 
@@ -48,7 +48,7 @@ export default function TermsOfService() {
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Terms of Service</h1>
               <p className="text-gray-600 mt-2">
-                Last updated: {new Date().toLocaleDateString()}
+                Last updated: September 2025
               </p>
             </div>
           </div>
@@ -154,7 +154,7 @@ export default function TermsOfService() {
               <p>We strive to provide reliable service but cannot guarantee:</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li>Uninterrupted or error-free operation</li>
-                <li>98% accuracy in AI processing or OCR results</li>
+                <li>100% accuracy in AI processing or OCR extraction results</li>
                 <li>Compatibility with all devices or browsers</li>
                 <li>Real-time data synchronization</li>
               </ul>
@@ -223,7 +223,7 @@ export default function TermsOfService() {
 
           {/* Footer */}
           <div className="text-center text-sm text-gray-500 py-8">
-            <p>Copyright © 2025 CoinMind-ai. All rights reserved.</p>
+            <p>Copyright © {new Date().getFullYear()} CoinMind AI. All rights reserved.</p>
           </div>
         </div>
       </Container>

@@ -66,7 +66,14 @@ export function Footer() {
           >
             <div className="relative flex h-20 w-20 flex-none items-center justify-center">
               <QrCodeBorder className="absolute inset-0 h-full w-full stroke-coinmind-accent transition-colors group-hover:stroke-coinmind-primary" />
-              <Image src={qrCode} alt={copy.footer.qrAlt} unoptimized />
+              <Image
+                src={qrCode}
+                alt={copy.footer.qrAlt}
+                width={68}
+                height={68}
+                className="h-[68px] w-[68px] rounded-sm"
+                unoptimized
+              />
             </div>
             <div className="max-w-xs">
               <p className="text-base font-bold text-coinmind-primary">

@@ -1,38 +1,43 @@
 {
-  "name": "tailwind-plus-pocket",
-  "version": "0.1.0",
+  "name": "coinmind-landing",
+  "version": "0.2.0",
   "private": true,
+  "packageManager": "pnpm@10.17.1",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
-    "@headlessui/react": "^2.2.6",
-    "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/postcss": "^4.1.11",
-    "@vercel/analytics": "^1.5.0",
-    "@vercel/og": "^0.8.5",
-    "@vercel/speed-insights": "^1.2.0",
+    "@headlessui/react": "^2.2.10",
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/postcss": "^4.3.5",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.1.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.23.11",
-    "next": "^15",
-    "react": "^19",
-    "react-dom": "^19",
-    "tailwindcss": "^4.1.11",
-    "typescript": "^5.8.3",
-    "use-debounce": "^10.0.5"
+    "framer-motion": "^14.14.0",
+    "lucide-react": "^1.72.0",
+    "next": "16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwindcss": "^4.3.5",
+    "use-debounce": "^10.1.1"
   },
   "devDependencies": {
-    "@types/node": "^24.1.0",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9.32.0",
-    "eslint-config-next": "^15",
-    "prettier": "^3.6.2",
-    "prettier-plugin-tailwindcss": "^0.6.14",
-    "sharp": "0.34.3"
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^10.15.0",
+    "eslint-config-next": "16.4.6",
+    "prettier": "^3.10.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "sharp": "^0.35.5",
+    "typescript": "~6.0.3"
   }
 }

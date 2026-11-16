@@ -78,7 +78,7 @@ export default function TermsOfService() {
                 <li><strong>Financial Analytics:</strong> Spending analysis, category breakdowns, and financial insights</li>
                 <li><strong>Multi-Currency Support:</strong> Transaction tracking in multiple currencies with automatic conversion</li>
                 <li><strong>Data Export:</strong> Export functionality for financial records</li>
-                <li><strong>User Authentication:</strong> Secure account management with OAuth providers (Google)</li>
+                <li><strong>User Authentication &amp; Hosting:</strong> Secure account management and database hosting powered by Supabase, with OAuth providers (Google)</li>
               </ul>
             </div>
           </div>
@@ -122,6 +122,7 @@ export default function TermsOfService() {
               <p>Our Service uses AI technologies to process your financial data:</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li><strong>Google Gemini AI:</strong> Used for natural language processing, receipt OCR, and transaction categorization</li>
+                <li><strong>Supabase (Database &amp; Authentication):</strong> Hosts user authentication and encrypted financial transaction records</li>
                 <li><strong>Speech Recognition:</strong> Voice-to-text conversion for transaction entry</li>
                 <li><strong>Data Analysis:</strong> AI-powered insights and spending pattern analysis</li>
               </ul>
@@ -216,7 +217,7 @@ export default function TermsOfService() {
               <p>If you have any questions about these Terms of Service, please contact us:</p>
               <ul className="list-none space-y-1 ml-4">
                 <li>Email: support@coinmind-ai.com</li>
-                <li>Website: https://coinmind-ai.com</li>
+                <li>Website: https://www.coinmind-ai.com</li>
               </ul>
             </div>
           </div>

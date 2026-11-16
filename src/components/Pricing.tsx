@@ -140,7 +140,7 @@ export function Pricing() {
               href={APP_SIGNUP_URL}
               variant="solid"
               color="primary"
-              aria-label={`${freePlan.cta} — ${freePlan.name}`}
+              aria-label={`${freePlan.cta} (${freePlan.name})`}
               onClick={() =>
                 trackLandingEvent('pricing_cta_click', {
                   plan: 'free',
@@ -204,7 +204,7 @@ export function Pricing() {
               href={`mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(copy.pricing.waitlistSubject)}`}
               variant="outline"
               color="white"
-              aria-label={`${proPlan.cta} — ${proPlan.name}`}
+              aria-label={`${proPlan.cta} (${proPlan.name})`}
               onClick={() =>
                 trackLandingEvent('pricing_cta_click', {
                   plan: 'pro_waitlist',

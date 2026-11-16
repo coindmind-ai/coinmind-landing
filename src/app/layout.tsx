@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: {
     template: '%s | CoinMind AI',
     default:
-      'CoinMind AI — Voice, Chat & Multi-Currency Personal Finance Assistant',
+      'CoinMind AI | Voice, Chat & Multi-Currency Expense Tracker',
   },
   description:
     'Log expenses and income naturally by voice, chat, or receipt photo in English, Arabic, and dozens of languages. Supports 170+ currencies with automatic conversion across Web & Android.',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      'CoinMind AI — Voice, Chat & Multi-Currency Personal Finance Assistant',
+      'CoinMind AI | Voice, Chat & Multi-Currency Expense Tracker',
     description:
       'Say what you spent. CoinMind logs, converts across 170+ currencies, and categorizes your finances on Web & Android.',
     url: 'https://www.coinmind-ai.com',
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
         url: '/api/og',
         width: 1200,
         height: 630,
-        alt: 'CoinMind AI — Voice, Chat & Multi-Currency Finance Assistant',
+        alt: 'CoinMind AI | Voice, Chat & Multi-Currency Expense Tracker',
       },
     ],
     locale: 'en_US',
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title:
-      'CoinMind AI — Voice, Chat & Multi-Currency Personal Finance Assistant',
+      'CoinMind AI | Voice, Chat & Multi-Currency Expense Tracker',
     description:
       'Speak, chat, or scan receipts in any language with automatic conversion across 170+ currencies.',
     images: ['/api/og'],

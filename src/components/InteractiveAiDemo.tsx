@@ -215,13 +215,11 @@ export function InteractiveAiDemo() {
   const [draft, setDraft] = useState('')
   const [submittedState, setSubmittedState] = useState<{
     prompt: string
-    locale: 'en' | 'ar'
   } | null>(null)
 
-  const customResult =
-    submittedState && submittedState.locale === locale
-      ? parseCustomExpenseInput(submittedState.prompt, locale)
-      : null
+  const customResult = submittedState
+    ? parseCustomExpenseInput(submittedState.prompt, locale)
+    : null
 
   const activeScenario =
     copy.demo.scenarios[selectedIndex] ?? copy.demo.scenarios[0]
@@ -241,7 +239,7 @@ export function InteractiveAiDemo() {
     const rawValue =
       draft.trim() || String(formData.get('demoPrompt') || '').trim()
     if (!rawValue) return
-    setSubmittedState({ prompt: rawValue, locale })
+    setSubmittedState({ prompt: rawValue })
     setDraft('')
     trackLandingEvent('interactive_demo_try', { scenario: 'custom_input' })
   }

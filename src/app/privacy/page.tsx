@@ -115,7 +115,7 @@ export default function PrivacyPolicy() {
                 <li><strong>AI Processing:</strong> To process your financial data through Google Gemini AI for categorization and insights</li>
                 <li><strong>Voice Recognition:</strong> To convert your voice input to text for transaction entry</li>
                 <li><strong>Receipt Processing:</strong> To extract transaction data from receipt images using OCR technology</li>
-                <li><strong>Account Management:</strong> To manage your account, authenticate users, and provide customer support</li>
+                <li><strong>Account Management:</strong> To manage your account, authenticate users via Supabase Auth, and provide customer support</li>
                 <li><strong>Analytics & Improvement:</strong> To understand how users interact with our features and identify areas for improvement</li>
                 <li><strong>Security:</strong> To protect against fraud, abuse, and security threats</li>
                 <li><strong>Communication:</strong> To send you important updates, security alerts, and support messages</li>
@@ -132,7 +132,7 @@ export default function PrivacyPolicy() {
                 <li><strong>Access Controls:</strong> Strict access controls and authentication requirements</li>
                 <li><strong>Regular Audits:</strong> Regular security assessments and vulnerability testing</li>
                 <li><strong>Data Minimization:</strong> We only collect and retain necessary data</li>
-                <li><strong>Secure Infrastructure:</strong> Hosted on secure cloud infrastructure with industry-standard security</li>
+                <li><strong>Secure Infrastructure (Supabase):</strong> Database storage and user authentication are hosted on Supabase with industry-standard encryption, row-level security, and access controls</li>
               </ul>
               <p>
                 However, no method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security.
@@ -162,7 +162,7 @@ export default function PrivacyPolicy() {
               <ul className="list-none space-y-1 ml-4">
                 <li><strong>Email:</strong> support@coinmind-ai.com</li>
                 <li><strong>Data Protection Officer:</strong> support@coinmind-ai.com</li>
-                <li><strong>Website:</strong> https://coinmind-ai.com</li>
+                <li><strong>Website:</strong> https://www.coinmind-ai.com</li>
               </ul>
               <p>
                 For EU users, you also have the right to lodge a complaint with your local data protection authority.

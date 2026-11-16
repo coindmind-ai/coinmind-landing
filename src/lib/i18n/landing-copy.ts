@@ -470,7 +470,7 @@ export const LANDING_COPY: Record<Locale, LandingCopy> = {
       storyLead:
         'CoinMind AI started solo at the Cursor Tallinn Hackathon to solve a simple frustration: logging daily expenses took too many taps.',
       storyBody:
-        'Right after the hackathon, a banking-systems engineer joined to bring real financial sanity and multi-currency precision. No vanity download numbers or inflated hype—just fast, reliable personal finance tools shaped directly with early users.',
+        'Right after the hackathon, a banking-systems engineer joined to add solid multi-currency accounting. No vanity metrics or hype, just fast and reliable personal finance tools built directly with early users.',
       pillars: [
         {
           title: 'Encrypted & Session-Isolated',
@@ -500,7 +500,7 @@ export const LANDING_COPY: Record<Locale, LandingCopy> = {
       perMonth: '/mo',
       perYear: '/yr',
       honestNote:
-        'CoinMind AI is currently in public beta—core multi-currency, voice, chat, and receipt features are open to start for free.',
+        'CoinMind AI is in public beta. Core multi-currency, voice, chat, and receipt features are free to use.',
       waitlistSubject: 'CoinMind AI Pro Waitlist',
       plans: {
         free: {
@@ -554,7 +554,7 @@ export const LANDING_COPY: Record<Locale, LandingCopy> = {
         {
           question: 'How does CoinMind AI log transactions from voice or chat?',
           answer:
-            'Just speak or type naturally—for example, "Paid $14 for lunch" or "Received $2,500 freelance payment." CoinMind AI extracts the amount, currency, type (expense or income), date, merchant, and category automatically.',
+            'Speak or type naturally, such as "Paid $14 for lunch" or "Received $2,500 freelance payment." CoinMind AI extracts the amount, currency, type, date, merchant, and category automatically.',
         },
         {
           question: 'Which languages and currencies are supported?',
@@ -871,7 +871,7 @@ export const LANDING_COPY: Record<Locale, LandingCopy> = {
       storyLead:
         'بدأ CoinMind AI كمشروع فردي في هاكاثون Cursor في مدينة تالين لحل مشكلة يومية بسيطة: تسجيل المصاريف التقليدي يأخذ وقتاً أطول مما ينبغي.',
       storyBody:
-        'بعد الهاكاثون انضم مهندس أنظمة مصرفية لبناء نظام عملات متعدد دقيق وموثوق. لا نستخدم أرقام تحميل وهمية أو وعوداً مبالغاً فيها — بل نبني المنتج علناً خطوة بخطوة مع مستخدمينا الأوائل.',
+        'بعد الهاكاثون انضم مهندس أنظمة مصرفية لبناء نظام عملات متعدد دقيق وموثوق. لا نعتمد على أرقام تحميل وهمية أو وعود مبالغ فيها، بل نبني المنتج بشفافية خطوة بخطوة مع مستخدمينا الأوائل.',
       pillars: [
         {
           title: 'تشفير وعزل كامل للجلسات',
@@ -902,7 +902,7 @@ export const LANDING_COPY: Record<Locale, LandingCopy> = {
       perMonth: '/شهرياً',
       perYear: '/سنوياً',
       honestNote:
-        'تطبيق CoinMind AI متاح حالياً في المرحلة التجريبية المفتوحة — جميع المزايا الأساسية للعملات والصوت والفواتير متاحة مجاناً.',
+        'تطبيق CoinMind AI متاح حالياً في المرحلة التجريبية المفتوحة، وجميع المزايا الأساسية للعملات والصوت والفواتير متاحة مجاناً.',
       waitlistSubject: 'قائمة انتظار باقة CoinMind AI المتقدمة',
       plans: {
         free: {
